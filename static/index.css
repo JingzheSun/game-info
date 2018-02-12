@@ -1,0 +1,16 @@
+body{
+	background-image: url('./hometown.png');
+	color: white;
+}
+
+p{
+	height: 2000px;
+}
+
+.abc{
+	height: 200px;
+}
+
+#header{
+	transition: 0.6s;
+}

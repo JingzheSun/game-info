@@ -1,0 +1,47 @@
+var webpack = require("webpack");
+
+module.exports = {
+    entry: './client/index.js',
+    output: {
+        path: __dirname + '/static',
+        filename: 'bundle.js'
+    },
+    module: {
+        rules:[
+            { 
+                test: /\.js[x]?$/, 
+                exclude: /node_modules/, 
+                use: {
+                    loader: 'babel-loader',
+                    options: {
+                      presets: ['es2015', 'react'],
+                    }
+                }
+            },
+            { test: /\.css$/, loader: 'style-loader!css-loader?modules' },
+            { test: /\.json$/, loader: 'json-loader' },
+            { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: "file-loader" },
+            { test: /\.(woff|woff2)$/, loader:"url-loader?prefix=font/&limit=5000" },
+        　　  { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=application/octet-stream" },
+            { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: "url-loader?limit=10000&mimetype=image/svg+xml" },
+            { test: /\.(png|jpg)$/, loader: 'url-loader?limit=8192' }
+        ]
+    },
+    resolve: {
+        extensions: ['.webpack.js', '.web.js', '.js']
+    },
+    node: {
+        console: true,
+        fs: 'empty',
+        net: 'empty',
+        tls: 'empty'
+    },
+    plugins: [
+        new webpack.ProvidePlugin({
+            $: "jquery",
+            jQuery: "jquery",
+            'window.$':'jquery',
+            'window.jQuery':'jquery'
+        })
+    ]
+};
