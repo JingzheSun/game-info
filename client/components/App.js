@@ -1,5 +1,5 @@
 import React from 'react';
-import Header from './Header.js';
+import Header from '../containers/HeaderStyle.js';
 import Body from './Body.js';
 
 //import  from '../../static/bootstrap.css';
@@ -7,9 +7,11 @@ import Body from './Body.js';
 export default class App extends React.Component{
 	render(){
 		return (
-			<div className='container'>
+			<div>
 				<Header />
 				<Body />
+				<div style={{height:'10px', background: 'red'}}>
+				</div>
 			</div>
 		)
 	}
