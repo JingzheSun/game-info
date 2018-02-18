@@ -10,8 +10,6 @@ export default class App extends React.Component{
 			<div>
 				<Header />
 				<Body />
-				<div style={{height:'10px', background: 'red'}}>
-				</div>
 			</div>
 		)
 	}

@@ -1,3 +1,6 @@
+import axios from 'axios';
+
+
 export const updateY = () => ({
 	type: 'Y_CHANGE',
 	y: window.scrollY
@@ -8,6 +11,23 @@ export const updateKeyWord = (keyWord) => ({
 	keyWord
 })
 
-export const getGames = () => ({
-	type: 'GET_GAMES'
+export const getGames = () => (dispatch, getState) => {
+	dispatch(requestGames());
+
+	return axios.get('/games')
+		.then(res => {
+			let {data} = res;
+			dispatch(receiveGames(data));
+		})
+		.catch(err => console.log(err))
+}
+
+export const requestGames = () => ({
+  type: 'REQUEST_GAMES'
+})
+
+export const receiveGames = (games) => ({
+  type: 'RECEIVE_GAMES',
+  games,
+  receivedAt: Date.now()
 })

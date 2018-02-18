@@ -4,14 +4,16 @@ import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {updateKeyWord} from '../actions.js';
 import PropTypes from 'prop-types';
-
 import {getGames} from '../actions.js'
+
 
 export let SearchBox = ({dispatch}) => {
 	let input;
+
 	return (
 		<input type='text' 
 			className='form-control' 
+			placeholder='game keyword'
 			onChange={() => {
 					dispatch(updateKeyWord(input.value))
 				} 
@@ -26,24 +28,34 @@ export let SearchBox = ({dispatch}) => {
 
 SearchBox = connect()(SearchBox)
 
+
 export class Games extends React.Component{
 
-	componentDidMount(){
-		this.props.getGames()
+	static propTypes = {
+	    games: PropTypes.arrayOf(PropTypes.shape({
+	    	name: PropTypes.string.isRequired,
+	    	description: PropTypes.string.isRequired,
+	    	image: PropTypes.string.isRequired,
+	    	category: PropTypes.array.isRequired
+	    }).isRequired).isRequired
 	}
+
+	componentDidMount() {
+    	const { dispatch } = this.props
+    	dispatch(getGames())
+  	}
 
 	render(){ 
 		let {games} = this.props;
-		console.log(games);
 		return (
 			<div>
 				<SearchBox />
 				<div className='container' style={styles.box}>
 					{
 						games.map((info, i) => (
-							<div key={i}>
-								<Link to={`/games/${info.name}`}>
-									<img src={info.image} style={{height:'200px'}}/>
+							<div key={i} style={styles.frame} >
+								<Link to={`/games/${info.name}`} style={{textDecoration: 'none'}}>
+									<img src={info.image} style={styles.img} className='gray'/>
 									<div style={styles.title}>
 										{info.name}
 									</div>
@@ -55,17 +67,7 @@ export class Games extends React.Component{
 			</div>
 		)
 	}
-};
-
-// Games.propTypes = {
-//   games: PropTypes.arrayOf(PropTypes.shape({
-//     name: PropTypes.number.isRequired,
-//     description: PropTypes.bool.isRequired,
-//     image: PropTypes.string.isRequired,
-//     category: PropTypes.array.isRequired
-//   }).isRequired).isRequired,
-//   getGames: PropTypes.func.isRequired
-// }
+}
 
 
 const styles = {};
@@ -79,17 +81,20 @@ styles.box = {
 	flexFlow: 'row',
 	flexWrap: 'wrap',
 	justifyContent: 'space-around',
-	alignItems: 'center' 
+	alignItems: 'center',
+	marginTop: '20px'
+}
+
+styles.frame = {
+	borderRadius: '1em'
 }
 
 styles.img = {
-	border: '2px',
-	borderRadius: '1em',
-	height: '100%'
+	borderRadius: '1em'
 }
 
 styles.title = {
 	color: 'white',
 	textAlign: 'center',
-	fontSize: '20px'
+	fontSize: '18px'
 }

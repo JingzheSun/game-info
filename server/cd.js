@@ -15,10 +15,10 @@ Game.find({}, (err, data) => {
 })*/
 
 // var game = new Game({
-// 	name: "Ori and the Blind Forest",
-// 	description: "When I lit the skies ablaze. I called out to Ori.",
-// 	category: ["2D", 'Story', 'Action'],
-// 	image: 'https://cdna.artstation.com/p/assets/images/images/000/548/770/20150316130556/smaller_square/johannes-figlhuber-eb72d79135ad065c5bfa9e40c7bce92b-d7mlqu8.jpg?1443932215'
+// 	name: "Pal",
+// 	description: "逍遥",
+// 	category: ['Relax', 'Pal'],
+// 	image: 'http://i.imgur.com/Zxu3j0T.jpg'
 // });
 
 // game.save((err, res) => {

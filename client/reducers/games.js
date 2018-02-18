@@ -1,16 +1,23 @@
-import axios from 'axios';
-
-const games = (state = [], action) => {
+const games = (state = {
+	isFetching: false,
+	didInvalidate: false,
+  	items: []
+}, action) => {
 	switch (action.type) {
-		case 'GET_GAMES':
-			console.log('get')
-			axios.get('/games')
-			.then(res => {
-				let {data} = res;
-				console.log(data)
-				return data
-			})
-			.catch(err => console.log(err))
+		case 'RECEIVE_GAMES':
+			return {
+				isFetching: false,
+				didInvalidate: false,
+				items: action.games,
+				lastUpdated: action.receivedAt
+			}
+
+		case 'REQUEST_GAMES':
+			return {
+				...state,
+				isFetching: true,
+				didInvalidate: false
+			}
 		default:
 			return state
 	}

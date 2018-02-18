@@ -3,13 +3,21 @@ import {Games} from '../components/Games.js';
 import {getGames} from '../actions.js';
 
 const gameFilter = (games, keyWord) => (
-	games.filter(game => game.name.includes(keyWord))
+	games.filter(game => 
+		game.name.toLowerCase().includes(keyWord.toLowerCase())
+	)
 )
 
 const mapStateToProps = state => {
-	console.log(state)
+	const { games, search } = state
+	const {
+		isFetching,
+		lastUpdated,
+		items
+	} = games || {isFetching: true, items: []}
+	
 	return {
-		games: gameFilter(state.games, state.search)
+		games: gameFilter(items, search)
 	}
 }
 
@@ -17,15 +25,9 @@ const mapStateToProps = state => {
 //   getGames
 // })
 
-const mapDispatchToProps = (dispatch) => ({
-  getGames: () => {
-    dispatch(getGames())
-  }
-})
 
 const FilterGameList = connect(
-	mapStateToProps,
-	mapDispatchToProps
+	mapStateToProps
 )(Games)
 
 export default FilterGameList

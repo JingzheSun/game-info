@@ -43,7 +43,7 @@ export default class Header extends React.Component{
 
 const styles = {};
 styles.box = {
-	background: 'rgba(111,111,111,0.5)',
+	background: 'rgba(111,111,111,0.3)',
 	height: '40px',
 	color: 'white',
 	display: 'flex',
