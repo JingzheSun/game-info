@@ -10,5 +10,3 @@ mongoose.connection
 		require('./cd.js')
 	})
 	.on('disconnected', () => console.log('db disconnected'));
-
-module.exports = mongoose;

@@ -7,6 +7,12 @@ p{
 	height: 2000px;
 }
 
+i{
+	margin: 0 20px 0 0;
+	font-size: 45px;
+	color: rgba(41,76,234,1);
+}
+
 .abc{
 	height: 200px;
 }

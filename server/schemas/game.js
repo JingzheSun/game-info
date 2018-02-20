@@ -1,5 +1,4 @@
-var mongoose = require('../database_connect.js');
-var Comment = require('./comment.js');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Game = new Schema({
@@ -19,8 +18,13 @@ var Game = new Schema({
 	category: {
 		type: Array,
 		require: false
+	},
+	comments: {
+		type: Schema.Types.ObjectId,
+		ref: 'Comment'
 	}
-	//comments: [Comment]
-}, {timestamps: true});
+}, {
+	timestamps: true
+});
 
 module.exports = mongoose.model('Game', Game)

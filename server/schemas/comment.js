@@ -1,4 +1,4 @@
-var mongoose = require('../database_connect.js');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var Comment = new Schema({
@@ -16,6 +16,8 @@ var Comment = new Schema({
         type: String,
         required: true
     }
-}, {timestamps: true});
+}, {
+    timestamps: true
+});
 
 module.exports = mongoose.model('Comment', Comment);

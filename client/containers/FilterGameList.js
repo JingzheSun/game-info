@@ -1,11 +1,20 @@
 import {connect} from 'react-redux';
 import {Games} from '../components/Games.js';
-import {getGames} from '../actions.js';
+import fsm from 'fuzzy-string-matching';
+//import pinyin from 'pinyin';
 
 const gameFilter = (games, keyWord) => (
-	games.filter(game => 
-		game.name.toLowerCase().includes(keyWord.toLowerCase())
-	)
+	games.filter(game => {
+		let key = keyWord.toLowerCase();
+		let name = game.name.toLowerCase();
+		let des = game.description.toLowerCase();
+		let cate = [
+			...game.category.map(c => c.toLowerCase()),
+			name,
+			des
+		]
+		return cate.some(c => c.includes(key) || fsm(c, key) > 0.3)
+	})
 )
 
 const mapStateToProps = state => {

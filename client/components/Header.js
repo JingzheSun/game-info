@@ -36,6 +36,9 @@ export default class Header extends React.Component{
 				<div>
 					<Link to='/r'>Overlord</Link>
 				</div>
+				<div>
+					<Link to='/auth'>Login</Link>
+				</div>
 			</header>
 		)
 	}

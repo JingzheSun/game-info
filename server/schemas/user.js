@@ -1,19 +1,25 @@
-var mongoose = require('../database_connect.js');
+var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
+var passportLocalMongoose = require('passport-local-mongoose');
 
 var User = new Schema({
     username: {
-      type: String,
-        default: ''
+        type: String,
+        require: true,
+        unique: true
+    },
+    password: {
+    	type: String,
+    	require: true
     },
     admin:   {
         type: Boolean,
         default: false
     }
 }, {
-    usePushEach: true
+    timestamps: true
 });
 
-//User.plugin(passportLocalMongoose);
+User.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', User);

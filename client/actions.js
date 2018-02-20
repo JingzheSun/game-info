@@ -1,6 +1,5 @@
 import axios from 'axios';
 
-
 export const updateY = () => ({
 	type: 'Y_CHANGE',
 	y: window.scrollY
@@ -21,13 +20,21 @@ export const getGames = () => (dispatch, getState) => {
 		})
 		.catch(err => console.log(err))
 }
-
 export const requestGames = () => ({
   type: 'REQUEST_GAMES'
 })
-
 export const receiveGames = (games) => ({
   type: 'RECEIVE_GAMES',
   games,
   receivedAt: Date.now()
+})
+
+export const loginError =  (msg) => ({
+	type: 'LOGIN_ERROR',
+	msg
+})
+
+export const registerError = (msg) => ({
+	type: 'REGISTER_ERROR',
+	msg
 })

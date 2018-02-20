@@ -1,7 +1,7 @@
 var Game = require('./schemas/game.js');
-//var Image = require('./schemas/image.js');
+var User = require('./schemas/user.js');
 
-Game.find({}, (err, data) => {
+User.find({}, (err, data) => {
 	console.log(err || data)
 });
 
@@ -15,10 +15,10 @@ Game.find({}, (err, data) => {
 })*/
 
 // var game = new Game({
-// 	name: "Pal",
-// 	description: "逍遥",
-// 	category: ['Relax', 'Pal'],
-// 	image: 'http://i.imgur.com/Zxu3j0T.jpg'
+// 	name: "轩辕剑",
+// 	description: "Bell, Sword, Axe, Kettle, Tower, Lyre, Mirror, Tripod, Seal, Stone",
+// 	category: ['Series', 'RPG'],
+// 	image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=3736497663,1120410685&fm=27&gp=0.jpg'
 // });
 
 // game.save((err, res) => {
