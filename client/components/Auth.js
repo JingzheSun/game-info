@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import {loginError, registerError} from '../actions';
+import {loginError, registerError, authInfo} from '../actions';
 
 export default class Auth extends React.Component{
 
@@ -36,7 +36,7 @@ export default class Auth extends React.Component{
 
 		axios.post(requestUrl,{username, password})
 		.then(res => {
-			console.log(res.data.username)
+			this.props.dispatch(authInfo(res.data))
 			this.props.history.push('/')
 		})
 		.catch(err => {

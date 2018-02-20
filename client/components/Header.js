@@ -1,7 +1,20 @@
 import React from 'react';
+import axios from 'axios';
+import PropTypes from 'prop-types';
 import {HashRouter, BrowserRouter, Route, Switch, Link} from 'react-router-dom';
+import {authInfo} from '../actions';
 
 export default class Header extends React.Component{
+
+	static propTypes = {
+	    dispatch: PropTypes.func,
+	    y: PropTypes.number
+	}
+
+	constructor(props){
+		super(props);
+		this.logout = this::this.logout;
+	}
 
 	componentDidMount(){
 		$(window).scroll(()=>{
@@ -24,7 +37,17 @@ export default class Header extends React.Component{
 		})
 	}
 
+	logout(){
+		axios.post('/auth/logout',{})
+		.then(res => {
+			this.props.dispatch(authInfo(''))
+			this.props.history.push('/r')
+		})
+		.catch(err => console.log(err.response))
+	}
+
 	render(){
+		let {auth} = this.props
 		return (
 			<header id='header' style={styles.box} className='fixed-top'>
 				<Link to='/'>
@@ -36,9 +59,12 @@ export default class Header extends React.Component{
 				<div>
 					<Link to='/r'>Overlord</Link>
 				</div>
-				<div>
-					<Link to='/auth'>Login</Link>
-				</div>
+				{
+					auth.username ? (<div onClick={this.logout}> Hi {auth.username}</div>)
+									: (<div><Link to='/auth'>Login</Link></div>)
+
+				}
+				
 			</header>
 		)
 	}

@@ -25,5 +25,11 @@ authRouter.route('/login')
 	res.status(200).send(req.user)
 })
 
+authRouter.route('/logout')
+.post((req, res, next) => {
+	console.log('logout')
+	res.status(200).send('success')
+})
+
 
 module.exports = authRouter;

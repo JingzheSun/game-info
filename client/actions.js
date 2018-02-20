@@ -38,3 +38,8 @@ export const registerError = (msg) => ({
 	type: 'REGISTER_ERROR',
 	msg
 })
+
+export const authInfo = (info) => ({
+	type: 'AUTHENTICATION_INFORMATION',
+	info
+})
