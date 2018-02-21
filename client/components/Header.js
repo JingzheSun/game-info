@@ -14,6 +14,7 @@ export default class Header extends React.Component{
 	constructor(props){
 		super(props);
 		this.logout = this::this.logout;
+		this.OAuth = this::this.OAuth;
 	}
 
 	componentDidMount(){
@@ -35,7 +36,19 @@ export default class Header extends React.Component{
 
 			this.props.updateY();
 		})
+
+		this.OAuth()
 	}
+
+	OAuth(){
+  		axios.get('auth/user')
+		.then(res => {
+			this.props.dispatch(authInfo(res.data))
+		})
+		.catch(err => {
+			console.log(err)
+		})	
+  	}
 
 	logout(){
 		axios.post('/auth/logout',{})
@@ -60,8 +73,9 @@ export default class Header extends React.Component{
 					<Link to='/r'>Overlord</Link>
 				</div>
 				{
-					auth.username ? (<div onClick={this.logout}> Hi {auth.username}</div>)
-									: (<div><Link to='/auth'>Login</Link></div>)
+					auth.username || auth.facebookId
+					? (<div onClick={this.logout}> Hi {auth.username || auth.facebookId}</div>)
+					: (<div><Link to='/auth'>Login</Link></div>)
 
 				}
 				

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import {loginError, registerError, authInfo} from '../actions';
 
 export default class Auth extends React.Component{
@@ -46,6 +47,8 @@ export default class Auth extends React.Component{
 		})	
   	}
 
+  	
+
 	render(){ 
 		let {login, register} = this.props;
 		return (
@@ -60,9 +63,12 @@ export default class Auth extends React.Component{
 						<br/>
 						<input value="Sign in" type="submit" className="btn btn-primary" onClick={this.auth}/>
 					</form>
-					<i className="fab fa-facebook"></i>
-					<i className="fab fa-twitter-square"></i>
+					<Link to='/auth/facebook'>ergh5ty6h</Link>
+					
+					<a href='/auth/twitter'><i className="fab fa-twitter-square"></i></a>
+					<a href='/auth/facebook'><i className="fab fa-facebook"></i></a>
 				</div>
+
 				<hr style={styles.hr}></hr>
 
 				<div >	

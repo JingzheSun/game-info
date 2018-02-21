@@ -8,9 +8,9 @@ var User = new Schema({
         require: true,
         unique: true
     },
-    password: {
+    facebookId: {
     	type: String,
-    	require: true
+    	default: ''
     },
     admin:   {
         type: Boolean,
