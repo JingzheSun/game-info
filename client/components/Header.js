@@ -2,7 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import {HashRouter, BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-import {authInfo} from '../actions';
+import {authInfo, updateY} from '../actions';
 
 export default class Header extends React.Component{
 
@@ -15,6 +15,7 @@ export default class Header extends React.Component{
 		super(props);
 		this.logout = this::this.logout;
 		this.OAuth = this::this.OAuth;
+		console.log(this.props)
 	}
 
 	componentDidMount(){
@@ -33,7 +34,7 @@ export default class Header extends React.Component{
 				$("#header").css({opacity: 0});
 				$("#header").css({visibility: 'hidden'})
 			}	
-			this.props.updateY();
+			this.props.dispatch(updateY());
 		})
 		console.log('postlisten')
 		this.OAuth()
@@ -43,7 +44,7 @@ export default class Header extends React.Component{
 		console.log('user')
   		axios.get('auth/user')
 		.then(res => {
-			console.log(res.data)
+			console.log(res)
 			this.props.dispatch(authInfo(res.data))
 		})
 		.catch(err => {

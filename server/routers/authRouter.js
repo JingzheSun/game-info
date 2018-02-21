@@ -58,6 +58,4 @@ authRouter.route('/user')
   	}	
 )
 
-
-
 module.exports = authRouter;
