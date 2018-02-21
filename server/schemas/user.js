@@ -8,7 +8,7 @@ var User = new Schema({
         unique: true,
         default: Math.random().toString(26)
     },
-    facebook: {
+    facebookId: {
     	type: String,
     	default: ''
     },
