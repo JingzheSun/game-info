@@ -5,7 +5,8 @@ var passportLocalMongoose = require('passport-local-mongoose');
 var User = new Schema({
     username: {
         type: String,
-        unique: true
+        unique: true,
+        default: Math.random().toString(26)
     },
     facebook: {
     	type: String,
