@@ -34,30 +34,30 @@ passport.use(new FacebookStrategy(facebookAuth,
   	}
 ));
 
-// passport.use(new TwitterStrategy(twitterAuth,
-// 	(accessToken, refreshToken, profile, done) => {
-// 		console.log(profile)
-//     	User.findOne({facebookId: profile.id}, (err, user) => {
-//             if (err) {
-//                 return done(err, false);
-//             }
-//             if (!err && user !== null) {
-//                 return done(null, user);
-//             }
-//             else {
-//                 user = new User({ username: profile.displayName });
-//                 user.facebookId = profile.id;
-//                 user.username = profile.username || profile.displayName;
-//                 user.save((err, user) => {
-//                     if (err)
-//                         return done(err, false);
-//                     else
-//                         return done(null, user);
-//                 })
-//             }
-//         });
-//   	}
-// ));
+passport.use(new TwitterStrategy(twitterAuth,
+	(token, tokenSecret, profile, done) => {
+		console.log(profile)
+    	User.findOne({facebookId: profile.id}, (err, user) => {
+            if (err) {
+                return done(err, false);
+            }
+            if (!err && user !== null) {
+                return done(null, user);
+            }
+            else {
+                user = new User({ username: profile.displayName });
+                // user.facebookId = profile.id;
+                // user.username = profile.username || profile.displayName;
+                // user.save((err, user) => {
+                //     if (err)
+                //         return done(err, false);
+                //     else
+                //         return done(null, user);
+                // })
+            }
+        });
+  	}
+));
 
 
 

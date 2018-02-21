@@ -63,10 +63,13 @@ export default class Auth extends React.Component{
 						<br/>
 						<input value="Sign in" type="submit" className="btn btn-primary" onClick={this.auth}/>
 					</form>
-					<Link to='/auth/facebook'>ergh5ty6h</Link>
-					
-					<a href='/auth/twitter'><i className="fab fa-twitter-square"></i></a>
-					<a href='/auth/facebook'><i className="fab fa-facebook"></i></a>
+
+					<span style={{marginRight: '20px'}}>
+						<a href='/auth/twitter'><i className="fab fa-twitter-square"></i></a>
+					</span>
+					<span>
+						<a href='/auth/facebook'><i className="fab fa-facebook"></i></a>
+					</span>
 				</div>
 
 				<hr style={styles.hr}></hr>

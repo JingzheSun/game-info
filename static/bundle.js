@@ -28791,7 +28791,6 @@ var Header = function (_React$Component) {
 
 			_axios2.default.get('auth/user').then(function (res) {
 				_this3.props.dispatch((0, _actions.authInfo)(res.data));
-				//this.props.history.push('/')
 			}).catch(function (err) {
 				console.log(err);
 			});
@@ -39857,16 +39856,22 @@ var Auth = function (_React$Component) {
 						_react2.default.createElement('input', { value: 'Sign in', type: 'submit', className: 'btn btn-primary', onClick: this.auth })
 					),
 					_react2.default.createElement(
-						_reactRouterDom.Link,
-						{ to: '/auth/facebook' },
-						'ergh5ty6h'
+						'span',
+						{ style: { marginRight: '20px' } },
+						_react2.default.createElement(
+							'a',
+							{ href: '/auth/twitter' },
+							_react2.default.createElement('i', { className: 'fab fa-twitter-square' })
+						)
 					),
-					_react2.default.createElement('i', { className: 'fab fa-facebook' }),
-					_react2.default.createElement('i', { className: 'fab fa-twitter-square' }),
 					_react2.default.createElement(
-						'a',
-						{ href: '/auth/facebook' },
-						'eghh'
+						'span',
+						null,
+						_react2.default.createElement(
+							'a',
+							{ href: '/auth/facebook' },
+							_react2.default.createElement('i', { className: 'fab fa-facebook' })
+						)
 					)
 				),
 				_react2.default.createElement('hr', { style: styles.hr }),
