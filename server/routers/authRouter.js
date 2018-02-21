@@ -49,8 +49,11 @@ authRouter.route('/twitter')
 authRouter.route('/twitter/callback')
 .get(passport.authenticate('twitter', { 
 	successRedirect: '/',
-	failureRedirect: '/'
-}))
+	failureRedirect: '/r'
+}),(req, res, next) => {
+	console.log(req.user)
+    res.status(200).redirect('/');
+})
 
 authRouter.route('/user')
 .get((req, res, next) => {

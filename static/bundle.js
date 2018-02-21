@@ -2465,7 +2465,7 @@ var registerError = exports.registerError = function registerError(msg) {
 var authInfo = exports.authInfo = function authInfo(info) {
 	return {
 		type: 'AUTHENTICATION_INFORMATION',
-		info: info
+		username: info
 	};
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
@@ -27672,7 +27672,10 @@ var authError = function authError() {
 
 	switch (action.type) {
 		case 'AUTHENTICATION_INFORMATION':
-			return action.info;
+			return {
+				username: action.username,
+				admin: false
+			};
 
 		default:
 			return state;
@@ -27902,7 +27905,7 @@ var Header = function (_React$Component) {
 			console.log('user');
 			_axios2.default.get('auth/user').then(function (res) {
 				console.log(res);
-				_this3.props.dispatch((0, _actions.authInfo)(res.data));
+				_this3.props.dispatch((0, _actions.authInfo)(res.data.username));
 			}).catch(function (err) {
 				console.log(err);
 			});

@@ -41,5 +41,5 @@ export const registerError = (msg) => ({
 
 export const authInfo = (info) => ({
 	type: 'AUTHENTICATION_INFORMATION',
-	info
+	username: info
 })

@@ -11,7 +11,6 @@ passport.deserializeUser(User.deserializeUser());
 
 passport.use(new FacebookStrategy(facebookAuth,
 	(accessToken, refreshToken, profile, done) => {
-		console.log(profile)
     	User.findOne({facebookId: profile.id}, (err, user) => {
             if (err) {
                 return done(err, false);
