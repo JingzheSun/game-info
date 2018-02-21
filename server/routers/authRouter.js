@@ -43,10 +43,10 @@ authRouter.route('/facebook/callback')
 )
 
 authRouter.route('/twitter')
-.get(passport.authenticate('facebook'),(req, res)=>console.log(res))
+.get(passport.authenticate('twitter'),(req, res)=>console.log(res))
 
 authRouter.route('/twitter/callback')
-.get(passport.authenticate('facebook', { failureRedirect: '/auth' }),
+.get(passport.authenticate('twitter', { failureRedirect: '/auth' }),
 	(req, res, next) => {
     	// Successful authentication, redirect home.
     	res.status(200).redirect('/');
