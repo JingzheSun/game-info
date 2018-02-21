@@ -39808,6 +39808,7 @@ var Auth = function (_React$Component) {
 
 			_axios2.default.post(requestUrl, { username: username, password: password }).then(function (res) {
 				_this2.props.dispatch((0, _actions.authInfo)(res.data));
+				_this2.props.dispatch(error(''));
 				_this2.props.history.push('/');
 			}).catch(function (err) {
 				if (err.response.data) {

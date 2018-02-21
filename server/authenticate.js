@@ -1,8 +1,8 @@
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('./schemas/user.js');
-var FacebookStrategy = require('passport-facebook');
-var TwitterStrategy = require('passport-twitter');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var TwitterStrategy = require('passport-twitter').Strategy;
 const {facebookAuth, twitterAuth} = require('./auth_config.js');
 
 passport.use(new LocalStrategy(User.authenticate()));

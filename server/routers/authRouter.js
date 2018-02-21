@@ -32,7 +32,7 @@ authRouter.route('/logout')
 })
 
 authRouter.route('/facebook')
-.get(passport.authenticate('facebook'),(req, res)=>console.log(res))
+.get(passport.authenticate('facebook'))
 
 authRouter.route('/facebook/callback')
 .get(passport.authenticate('facebook', { failureRedirect: '/auth' }),
@@ -43,7 +43,7 @@ authRouter.route('/facebook/callback')
 )
 
 authRouter.route('/twitter')
-.get(passport.authenticate('twitter'),(req, res)=>console.log(res))
+.get(passport.authenticate('twitter'))
 
 authRouter.route('/twitter/callback')
 .get(passport.authenticate('twitter', { 

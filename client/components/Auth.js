@@ -38,6 +38,7 @@ export default class Auth extends React.Component{
 		axios.post(requestUrl,{username, password})
 		.then(res => {
 			this.props.dispatch(authInfo(res.data))
+			this.props.dispatch(error(''))
 			this.props.history.push('/')
 		})
 		.catch(err => {
