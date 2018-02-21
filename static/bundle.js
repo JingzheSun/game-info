@@ -27905,7 +27905,7 @@ var Header = function (_React$Component) {
 			console.log('user');
 			_axios2.default.get('auth/user').then(function (res) {
 				console.log(res);
-				_this3.props.dispatch((0, _actions.authInfo)(res.data.username));
+				_this3.props.dispatch((0, _actions.authInfo)(res.data));
 			}).catch(function (err) {
 				console.log(err);
 			});
@@ -39806,7 +39806,7 @@ var Auth = function (_React$Component) {
 			}
 
 			_axios2.default.post(requestUrl, { username: username, password: password }).then(function (res) {
-				_this2.props.dispatch((0, _actions.authInfo)(res.data));
+				_this2.props.dispatch((0, _actions.authInfo)(res.data.username));
 				_this2.props.dispatch(error(''));
 				_this2.props.history.push('/');
 			}).catch(function (err) {

@@ -45,7 +45,7 @@ export default class Header extends React.Component{
   		axios.get('auth/user')
 		.then(res => {
 			console.log(res)
-			this.props.dispatch(authInfo(res.data.username))
+			this.props.dispatch(authInfo(res.data))
 		})
 		.catch(err => {
 			console.log(err)

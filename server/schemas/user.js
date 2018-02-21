@@ -8,11 +8,19 @@ var User = new Schema({
         require: true,
         unique: true
     },
-    facebookId: {
+    facebook: {
     	type: String,
     	default: ''
     },
+    fbname: {
+        type: String,
+        default: ''
+    },
     twitterId: {
+        type: String,
+        default: ''
+    },
+    ttname: {
         type: String,
         default: ''
     },

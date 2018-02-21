@@ -58,7 +58,7 @@ authRouter.route('/twitter/callback')
 authRouter.route('/user')
 .get((req, res, next) => {
 	console.log(req.user)
-   	res.status(200).send(req.user);
+   	res.status(200).send(req.user.ttname || req.user.fbname);
 })
 
 module.exports = authRouter;
