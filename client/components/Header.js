@@ -18,9 +18,9 @@ export default class Header extends React.Component{
 	}
 
 	componentDidMount(){
+		console.log('prelisten')
 		$(window).scroll(()=>{
 			let y = window.scrollY;
-			
 			if(y < 50){
 				$("#header").css({visibility: 'visible'});
 				$('#header').removeClass('fixed-top');
@@ -33,16 +33,17 @@ export default class Header extends React.Component{
 				$("#header").css({opacity: 0});
 				$("#header").css({visibility: 'hidden'})
 			}	
-
 			this.props.updateY();
 		})
-
+		console.log('postlisten')
 		this.OAuth()
 	}
 
 	OAuth(){
+		console.log('user')
   		axios.get('auth/user')
 		.then(res => {
+			console.log(res.data)
 			this.props.dispatch(authInfo(res.data))
 		})
 		.catch(err => {
