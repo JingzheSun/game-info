@@ -77,7 +77,6 @@ export default class Header extends React.Component{
 					auth.username || auth.facebookId
 					? (<div onClick={this.logout}> Hi {auth.username || auth.facebookId}</div>)
 					: (<div><Link to='/auth'>Login</Link></div>)
-
 				}
 				
 			</header>

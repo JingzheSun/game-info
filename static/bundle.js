@@ -28713,7 +28713,7 @@ module.exports = function spread(callback) {
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-/* WEBPACK VAR INJECTION */(function($, console) {
+/* WEBPACK VAR INJECTION */(function(console, $) {
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -28763,9 +28763,9 @@ var Header = function (_React$Component) {
 		value: function componentDidMount() {
 			var _this2 = this;
 
+			console.log('prelisten');
 			$(window).scroll(function () {
 				var y = window.scrollY;
-
 				if (y < 50) {
 					$("#header").css({ visibility: 'visible' });
 					$('#header').removeClass('fixed-top');
@@ -28778,10 +28778,9 @@ var Header = function (_React$Component) {
 					$("#header").css({ opacity: 0 });
 					$("#header").css({ visibility: 'hidden' });
 				}
-
 				_this2.props.updateY();
 			});
-
+			console.log('postlisten');
 			this.OAuth();
 		}
 	}, {
@@ -28789,7 +28788,9 @@ var Header = function (_React$Component) {
 		value: function OAuth() {
 			var _this3 = this;
 
+			console.log('user');
 			_axios2.default.get('auth/user').then(function (res) {
+				console.log(res.data);
 				_this3.props.dispatch((0, _actions.authInfo)(res.data));
 			}).catch(function (err) {
 				console.log(err);
@@ -28883,7 +28884,7 @@ styles.img = {
 	borderRadius: '1em',
 	height: '100%'
 };
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(156), __webpack_require__(4)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4), __webpack_require__(156)))
 
 /***/ }),
 /* 156 */
