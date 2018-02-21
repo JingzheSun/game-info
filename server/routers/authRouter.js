@@ -38,7 +38,7 @@ authRouter.route('/facebook')
 authRouter.route('/facebook/callback')
 .get(passport.authenticate('facebook', { failureRedirect: '/auth' }),
 	(req, res, next) => {
-		console.log('fb auth')
+		console.log(req.user)
     	res.status(200).redirect('/');
   	}	
 )
@@ -54,8 +54,8 @@ authRouter.route('/twitter/callback')
 
 authRouter.route('/user')
 .get((req, res, next) => {
-    	res.status(200).send(req.user);
-  	}	
-)
+	console.log(req.user)
+   	res.status(200).send(req.user);
+})
 
 module.exports = authRouter;

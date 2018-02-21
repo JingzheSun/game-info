@@ -27901,7 +27901,7 @@ var Header = function (_React$Component) {
 
 			console.log('user');
 			_axios2.default.get('auth/user').then(function (res) {
-				console.log(res.data);
+				console.log(res);
 				_this3.props.dispatch((0, _actions.authInfo)(res.data));
 			}).catch(function (err) {
 				console.log(err);
