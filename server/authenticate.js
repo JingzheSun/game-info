@@ -19,7 +19,7 @@ passport.use(new FacebookStrategy(facebookAuth,
                 return done(null, user);
             }
             else {
-                user = new User({});
+                user = new User({ username: profile.id });
                 user.facebookId = profile.id;
                 user.fbname = profile.displayName || profile.username;
                 user.save((err, user) => {
@@ -43,7 +43,7 @@ passport.use(new TwitterStrategy(twitterAuth,
                 return done(null, user);
             }
             else {
-                user = new User({});
+                user = new User({username: profile.id});
                 user.twitterId = profile.id;
                 user.ttname =  profile.username;
                 user.save((err, user) => {
