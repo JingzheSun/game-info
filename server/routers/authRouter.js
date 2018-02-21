@@ -22,6 +22,7 @@ authRouter.route('/register')
 
 authRouter.route('/login')
 .post(passport.authenticate('local'), (req, res, next) => {
+	console.log('local auth')
 	res.status(200).send(req.user)
 })
 
@@ -37,7 +38,7 @@ authRouter.route('/facebook')
 authRouter.route('/facebook/callback')
 .get(passport.authenticate('facebook', { failureRedirect: '/auth' }),
 	(req, res, next) => {
-    	// Successful authentication, redirect home.
+		console.log('fb auth')
     	res.status(200).redirect('/');
   	}	
 )

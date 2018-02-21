@@ -48,8 +48,6 @@ export default class Auth extends React.Component{
 		})	
   	}
 
-  	
-
 	render(){ 
 		let {login, register} = this.props;
 		return (
