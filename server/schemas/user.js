@@ -12,6 +12,10 @@ var User = new Schema({
     	type: String,
     	default: ''
     },
+    twitterId: {
+        type: String,
+        default: ''
+    },
     admin:   {
         type: Boolean,
         default: false

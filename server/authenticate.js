@@ -22,7 +22,7 @@ passport.use(new FacebookStrategy(facebookAuth,
             else {
                 user = new User({ username: profile.displayName });
                 user.facebookId = profile.id;
-                user.username = profile.username || profile.displayName;
+                user.username = profile.displayName || profile.username;
                 user.save((err, user) => {
                     if (err)
                         return done(err, false);
@@ -36,8 +36,7 @@ passport.use(new FacebookStrategy(facebookAuth,
 
 passport.use(new TwitterStrategy(twitterAuth,
 	(token, tokenSecret, profile, done) => {
-		console.log(profile)
-    	User.findOne({facebookId: profile.id}, (err, user) => {
+    	User.findOne({twitterId: profile.id}, (err, user) => {
             if (err) {
                 return done(err, false);
             }
@@ -46,14 +45,14 @@ passport.use(new TwitterStrategy(twitterAuth,
             }
             else {
                 user = new User({ username: profile.displayName });
-                // user.facebookId = profile.id;
-                // user.username = profile.username || profile.displayName;
-                // user.save((err, user) => {
-                //     if (err)
-                //         return done(err, false);
-                //     else
-                //         return done(null, user);
-                // })
+                user.twitterId = profile.id;
+                user.username = profile.displayName || profile.username;
+                user.save((err, user) => {
+                    if (err)
+                        return done(err, false);
+                    else
+                        return done(null, user);
+                })
             }
         });
   	}
