@@ -1,9 +1,22 @@
 var Game = require('./schemas/game.js');
 var User = require('./schemas/user.js');
+var Comment = require('./schemas/comment.js');
 
-User.find({}, (err, data) => {
-	console.log(err || data)
+
+Game.find({}, (err, data) => {
+	console.log(err || data);
 });
+
+// Comment.find({}, (error, arr) => {
+// 	console.log(error || arr);
+// 	let tmp = arr.map(a => a._id)
+// 	console.log(tmp)
+
+// 	Game.update({name: 'Diablo'}, { $push: { comments: tmp[1]}},
+// 		(err, data) => {
+// 		console.log(data)
+// 	});	
+// });
 
 /*User.remove({}, function(err, res){
     if (err) {
@@ -27,5 +40,21 @@ User.find({}, (err, data) => {
 // 	}
 // 	else {
 // 		console.log("Res:" + res);
+// 	}
+// });
+
+
+// var comment = new Comment({
+// 	author: "whoever",
+// 	comment: "Belne",
+// 	rating: 8 
+// });
+
+// comment.save((err, res) => {
+// 	if (err) {
+// 		console.log(err.errmsg);
+// 	}
+// 	else {
+// 		console.log(res);
 // 	}
 // });

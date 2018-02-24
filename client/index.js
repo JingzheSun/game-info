@@ -11,7 +11,7 @@ import App from './components/App.js';
 
 const middlewares = [thunk]
 // for test only
-middlewares.push(createLogger());
+//middlewares.push(createLogger());
 
 const store = createStore(
 	reducer,

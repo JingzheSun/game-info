@@ -11,18 +11,20 @@ export let SearchBox = ({dispatch}) => {
 	let input;
 
 	return (
-		<input type='text' 
-			className='form-control' 
-			placeholder='game keyword'
-			onChange={() => {
-					dispatch(updateKeyWord(input.value))
-				} 
-			}
-			style={styles.input} 
-			ref={node => {
-         		input = node
-        	}}
-		/>
+		<div className='container'>
+			<input type='text' 
+				className='form-control' 
+				placeholder='game keyword'
+				onChange={() => {
+						dispatch(updateKeyWord(input.value))
+					} 
+				}
+				style={styles.input} 
+				ref={node => {
+	         		input = node
+	        	}}
+			/>
+		</div>
 	)
 }
 
@@ -54,10 +56,7 @@ export class Games extends React.Component{
 					{
 						games.map((info, i) => (
 							<div key={i} style={styles.frame} >
-								<Link to={{
-						            pathname: `/games/${info._id}`,
-						        	state: {info}
-			        			}} 
+								<Link to={`/games/${info.name}`} 
 			        			style={{textDecoration: 'none'}}>
 									<img src={info.image} style={styles.img} className='gray'/>
 									<div style={styles.title}>

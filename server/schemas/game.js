@@ -19,10 +19,10 @@ var Game = new Schema({
 		type: Array,
 		require: false
 	},
-	comments: {
+	comments: [{
 		type: Schema.Types.ObjectId,
 		ref: 'Comment'
-	}
+	}]
 }, {
 	timestamps: true
 });

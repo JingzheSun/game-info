@@ -38,7 +38,7 @@ require('./database_connect.js');
 app.use(express.static(path.join(__dirname, '../static')));
 
 app.use('/auth', authRouter);
-app.use('/getGames', gameRouter);
+app.use('/games', gameRouter);
 app.use('*', (req,res)=>{
   res.sendFile(path.resolve(__dirname, '../static/index.html'));
 });

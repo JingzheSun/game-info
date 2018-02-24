@@ -51,7 +51,7 @@ export default class Header extends React.Component{
 		axios.post('/auth/logout',{})
 		.then(res => {
 			this.props.dispatch(authInfo(''))
-			this.props.history.push('/r')
+			this.props.history.push('/')
 		})
 		.catch(err => console.log(err.response))
 	}
@@ -64,18 +64,17 @@ export default class Header extends React.Component{
 					<img src="Ragnaros.png" style={styles.img}/>
 				</Link>
 				<div>
-					<Link to='/'>Home</Link>
-				</div>
-				<div>
-					<Link to={{
-			            	pathname: "/r/r",
-			            	state: { from: 'fwerhtujyk' }
-			        	}}>Overlord
+					<Link to="/r/r">
+					O
 			        </Link>
 				</div>
 				{
 					auth.username || auth.facebookId
-					? (<div onClick={this.logout}> Hi {auth.username || auth.facebookId}</div>)
+					? 	(
+							<button onClick={this.logout} className='btn btn-danger'> 
+								Hi {auth.username || auth.facebookId}
+							</button>
+						)
 					: (<div><Link to='/auth'>Login</Link></div>)
 				}
 				
@@ -87,7 +86,7 @@ export default class Header extends React.Component{
 const styles = {};
 styles.box = {
 	background: 'rgba(111,111,111,0.3)',
-	height: '40px',
+	height: '50px',
 	position: 'fixed',
 	top: 0,
 	right: 0,
@@ -98,7 +97,9 @@ styles.box = {
 	flexFlow: 'row',
 	flexWrap: 'nowrap',
 	justifyContent: 'space-around',
-	alignItems: 'center' 
+	alignItems: 'center',
+	borderRadius: '0.5em',
+	boxShadow: '0px 0px 20px 0px white, 0px 0px 30px 0px white inset'
 }
 
 styles.img = {
