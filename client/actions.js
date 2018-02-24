@@ -13,7 +13,7 @@ export const updateKeyWord = (keyWord) => ({
 export const getGames = () => (dispatch, getState) => {
 	dispatch(requestGames());
 
-	return axios.get('/games')
+	return axios.get('/getGames')
 		.then(res => {
 			let {data} = res;
 			dispatch(receiveGames(data));

@@ -11,12 +11,12 @@ var authRouter = require('./routers/authRouter.js');
 
 var opts = {auth: ''};
 if (process.env.REDISTOGO_URL){
-    opts = require("url").parse(process.env.REDISTOGO_URL);
+  opts = require("url").parse(process.env.REDISTOGO_URL);
 }
 var options = {
-    host: opts.hostname || "127.0.0.1",
-    port: opts.port || 6379,
-    pass: opts.auth.split(':')[1]
+  host: opts.hostname || "127.0.0.1",
+  port: opts.port || 6379,
+  pass: opts.auth.split(':')[1]
 };
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -24,10 +24,10 @@ app.use(cookieParser('GameInfo'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(session({
-    store: new RedisStore(options),
-    secret: 'GameInfo',
-    resave: true,
-  	saveUninitialized: true
+  store: new RedisStore(options),
+  secret: 'GameInfo',
+  resave: true,
+  saveUninitialized: true
 }));
 app.use(passport.initialize());
 app.use(passport.session());
@@ -35,16 +35,15 @@ app.use(passport.session());
 require('./authenticate.js');
 require('./database_connect.js');
 
-
 app.use(express.static(path.join(__dirname, '../static')));
 
 app.use('/auth', authRouter);
-app.use('/games', gameRouter);
-app.use('/', (req,res)=>{
-     res.sendFile(path.resolve(__dirname, '../static/index.html'));
+app.use('/getGames', gameRouter);
+app.use('*', (req,res)=>{
+  res.sendFile(path.resolve(__dirname, '../static/index.html'));
 });
 
 app.set('port', process.env.PORT || 5000);
 app.listen(app.get('port'), ()=>{
-	console.log('listening '+ app.get('port'));
+  console.log('listening '+ app.get('port'));
 });

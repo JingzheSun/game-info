@@ -54,7 +54,11 @@ export class Games extends React.Component{
 					{
 						games.map((info, i) => (
 							<div key={i} style={styles.frame} >
-								<Link to={`/games/${info.name}`} style={{textDecoration: 'none'}}>
+								<Link to={{
+						            pathname: `/games/${info._id}`,
+						        	state: {info}
+			        			}} 
+			        			style={{textDecoration: 'none'}}>
 									<img src={info.image} style={styles.img} className='gray'/>
 									<div style={styles.title}>
 										{info.name}

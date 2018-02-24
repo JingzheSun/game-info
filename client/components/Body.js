@@ -10,7 +10,7 @@ export default class Body extends React.Component{
 			<div className='container'>
 				<Switch>
 					<Route path='/' exact component={Games}/>
-					<Route path='/r' component={R}/>
+					<Route path='/r/r' component={R}/>
 					<Route path='/games' component={GameInfo} />
 					<Route path='/auth' component={Auth} />
 				</Switch>
@@ -19,9 +19,12 @@ export default class Body extends React.Component{
 	}
 };
 
-const R = () => (
-	<div>
-		<img src='Ragnaros.png'/>
-	</div>
-)
+const R = (props) => {
+	console.log(props)
+	return (
+		<div>
+			<img src='/Ragnaros.png'/>
+		</div>
+	)
+}
  
