@@ -22,7 +22,7 @@ authRouter.route('/register')
 
 authRouter.route('/login')
 .post(passport.authenticate('local'), (req, res, next) => {
-	console.log('local auth')
+	console.log(req.user)
 	res.status(200).send(req.user)
 })
 
@@ -57,7 +57,6 @@ authRouter.route('/twitter/callback')
 
 authRouter.route('/user')
 .get((req, res, next) => {
-	console.log(req.user)
 	if (req.user){
 	   	res.status(200).send(req.user.ttname || req.user.fbname || req.user.username);
 	} else {

@@ -39516,7 +39516,7 @@ Games.propTypes = {
 var styles = {};
 
 styles.input = {
-	marginTop: '50px'
+	marginTop: '60px'
 };
 
 styles.box = {
@@ -39690,38 +39690,34 @@ var GameInfo = function (_React$Component) {
 			var game = this.props.game || { _id: 0 };
 			return _react2.default.createElement(
 				'div',
-				null,
+				{ className: 'container' },
 				_react2.default.createElement('img', { src: game.image, style: styles.pic }),
+				game.comments && game.comments.map(function (c, i) {
+					return _react2.default.createElement(
+						'div',
+						{ key: i, style: styles.comment },
+						'rating: ',
+						c.rating,
+						' by ',
+						c.author,
+						_react2.default.createElement(
+							'p',
+							null,
+							c.comment
+						)
+					);
+				}),
 				_react2.default.createElement(
-					'div',
-					{ className: 'container' },
-					game.comments && game.comments.map(function (c, i) {
-						return _react2.default.createElement(
-							'div',
-							{ key: i, style: styles.comment },
-							'rating: ',
-							c.rating,
-							' by ',
-							c.author,
-							_react2.default.createElement(
-								'p',
-								null,
-								c.comment
-							)
-						);
-					}),
-					_react2.default.createElement(
-						'form',
-						{ method: 'POST', action: '/games/comments' },
-						_react2.default.createElement('input', { type: 'number', name: 'rating', min: '1', max: '10' }),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement('input', { type: 'text', name: 'comment' }),
-						_react2.default.createElement('br', null),
-						_react2.default.createElement('input', { type: 'hidden', name: 'author', value: authInfo.username }),
-						_react2.default.createElement('input', { type: 'hidden', name: 'route', value: location.pathname }),
-						_react2.default.createElement('input', { type: 'hidden', name: 'gameId', value: game._id }),
-						_react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'submit' })
-					)
+					'form',
+					{ method: 'POST', action: '/games/comments' },
+					_react2.default.createElement('input', { type: 'number', name: 'rating', className: 'form-control', min: '1', max: '10', placeholder: 'rating', required: true }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('input', { type: 'text', name: 'comment', className: 'form-control', placeholder: 'any comments', required: true }),
+					_react2.default.createElement('br', null),
+					_react2.default.createElement('input', { type: 'hidden', name: 'author', value: authInfo.username }),
+					_react2.default.createElement('input', { type: 'hidden', name: 'route', value: location.pathname }),
+					_react2.default.createElement('input', { type: 'hidden', name: 'gameId', value: game._id }),
+					_react2.default.createElement('input', { type: 'submit', name: 'submit', value: 'submit', className: 'btn btn-success' })
 				)
 			);
 		}
@@ -39749,13 +39745,15 @@ exports.default = (0, _reactRedux.connect)(mapStateToProps)(GameInfo);
 var styles = {};
 
 styles.pic = {
-	maxHeight: '70%',
-	maxWidth: '70%'
+	maxHeight: '800px',
+	maxWidth: '100%',
+	margin: '60px auto'
 };
 
 styles.comment = {
 	color: 'lightgray',
 	border: '1px solid white',
+	padding: '10px',
 	margin: '5px'
 };
 

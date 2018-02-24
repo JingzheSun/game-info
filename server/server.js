@@ -16,7 +16,8 @@ if (process.env.REDISTOGO_URL){
 var options = {
   host: opts.hostname || "127.0.0.1",
   port: opts.port || 6379,
-  pass: opts.auth.split(':')[1]
+  pass: opts.auth.split(':')[1],
+  ttl: 60*60*1 //session expires in 1h
 };
 
 app.use(express.static(path.join(__dirname, 'public')));

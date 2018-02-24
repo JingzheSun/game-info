@@ -76,7 +76,7 @@ export class Games extends React.Component{
 const styles = {};
 
 styles.input = {
-	marginTop: '50px'
+	marginTop: '60px'
 }
 
 styles.box = {

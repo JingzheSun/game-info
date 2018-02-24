@@ -20,7 +20,6 @@ gameRouter.route('/')
 
 gameRouter.route('/comments')
 .post((req, res, next) => {
-	console.log(req.body)
 	if (!req.user){
 		res.status(401).redirect('/auth');
 	} else {
@@ -30,7 +29,6 @@ gameRouter.route('/comments')
 		 	comment,
  			rating 
 		}).then(c => {
-			console.log(c)
 			Game.update({_id: gameId}, 
 				{ $push: { comments: c._id}},
 				(err, data) => {

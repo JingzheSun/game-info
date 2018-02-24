@@ -18,28 +18,26 @@ class GameInfo extends React.Component{
 		let {location, authInfo} = this.props;
 		let game = this.props.game || {_id: 0}
 		return (
-			<div>
+			<div className='container'>
 				<img src={game.image} style={styles.pic}/>
-				<div className='container'>
-					{	
-						game.comments && game.comments.map((c,i) => (
-							<div key={i} style={styles.comment}>
-								rating: {c.rating} by {c.author}
-								<p>
-									{c.comment}
-								</p>
-							</div>
-						))
-					}
-					<form method='POST' action='/games/comments'>
-						<input type='number' name='rating' min='1' max='10'/><br/>
-						<input type='text' name='comment' /><br/>
-						<input type='hidden' name='author' value={authInfo.username}/>
-						<input type='hidden' name='route' value={location.pathname}/>
-						<input type='hidden' name='gameId' value={game._id}/>
-						<input type='submit' name='submit' value='submit'/>
-					</form>
-				</div>
+				{	
+					game.comments && game.comments.map((c,i) => (
+						<div key={i} style={styles.comment}>
+							rating: {c.rating} by {c.author}
+							<p>
+								{c.comment}
+							</p>
+						</div>
+					))
+				}
+				<form method='POST' action='/games/comments'>
+					<input type='number' name='rating' className='form-control' min='1' max='10' placeholder='rating' required/><br/>
+					<input type='text' name='comment' className='form-control' placeholder='any comments' required/><br/>
+					<input type='hidden' name='author' value={authInfo.username}/>
+					<input type='hidden' name='route' value={location.pathname}/>
+					<input type='hidden' name='gameId' value={game._id}/>
+					<input type='submit' name='submit' value='submit' className='btn btn-success'/>
+				</form>
 			</div>
 		)
 	}
@@ -61,12 +59,14 @@ export default connect(
 const styles = {}
 
 styles.pic = {
-	maxHeight:'70%',
-	maxWidth: '70%'
+	maxHeight:'800px',
+	maxWidth: '100%',
+	margin: '60px auto'
 }
 
 styles.comment = {
 	color: 'lightgray',
 	border: '1px solid white',
+	padding: '10px',
 	margin: '5px'
 }
