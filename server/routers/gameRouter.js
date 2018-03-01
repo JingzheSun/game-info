@@ -9,7 +9,10 @@ gameRouter.use(bodyParser.json());
 gameRouter.route('/')
 .get((req, res, next) => {
 	Game.find({})
-	.populate('comments')
+	.populate({
+	    path: 'comments',
+	    populate: { path: 'author' }
+	})
 	.then(games => {
 		res.statusCode = 200;
         res.setHeader('Content-Type', 'application/json');
@@ -28,7 +31,8 @@ gameRouter.route('/comments')
 			author,
 		 	comment,
  			rating 
-		}).then(c => {
+		})
+		.then(c => {
 			Game.update({_id: gameId}, 
 				{ $push: { comments: c._id}},
 				(err, data) => {
@@ -36,8 +40,22 @@ gameRouter.route('/comments')
 					res.redirect(route);
 				}
 			);
-		}).catch(error => console.log(error))
+		})
+		.catch(error => console.log(error))
 	}
+})
+.patch((req, res, next) => {
+	let {commentId, gameId} = req.body;
+	
+	Game.update({_id: gameId}, { $pull: { comments: commentId}})
+	.then(r => console.log(r))
+	.catch(err => console.log(err))
+
+	Comment.remove({_id: commentId})
+	.then(resp => console.log(resp))
+	.catch(error => console.log(error))
+
+	res.end('');
 })
 
 

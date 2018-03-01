@@ -39,7 +39,9 @@ export const registerError = (msg) => ({
 	msg
 })
 
-export const authInfo = (info) => ({
+export const authInfo = (info, id) => ({
 	type: 'AUTHENTICATION_INFORMATION',
-	username: info
+	username: info,
+	id: id
 })
+

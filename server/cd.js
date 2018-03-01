@@ -3,7 +3,7 @@ var User = require('./schemas/user.js');
 var Comment = require('./schemas/comment.js');
 
 
-Game.find({}, (err, data) => {
+Comment.find({}, (err, data) => {
 	console.log(err || data);
 });
 
@@ -11,21 +11,27 @@ Game.find({}, (err, data) => {
 // 	console.log(error || arr);
 // 	let tmp = arr.map(a => a._id)
 // 	console.log(tmp)
-
 // 	Game.update({name: 'Diablo'}, { $push: { comments: tmp[1]}},
 // 		(err, data) => {
 // 		console.log(data)
 // 	});	
 // });
 
-/*User.remove({}, function(err, res){
-    if (err) {
-        console.log("Error:" + err);
-    }
-    else {
-        console.log("Res:" + res);
-    }
-})*/
+// Game.update({}, { $set: { comments: []}}, { multi: true },
+// 	(err, data) => {
+// 	console.log(data)
+// });	
+
+// Comment.remove({}, function(err, res){
+//     if (err) {
+//         console.log("Error:" + err);
+//     }
+//     else {
+//         console.log("Res:" + res);
+//     }
+// })
+
+
 
 // var game = new Game({
 // 	name: "轩辕剑",

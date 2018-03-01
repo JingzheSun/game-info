@@ -2,7 +2,6 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var User = require('../schemas/user.js');
 var passport = require('passport');
-//var authenticate = require('../authenticate.js');
 var authRouter = express.Router();
 authRouter.use(bodyParser.json());
 
@@ -58,9 +57,13 @@ authRouter.route('/twitter/callback')
 authRouter.route('/user')
 .get((req, res, next) => {
 	if (req.user){
-	   	res.status(200).send(req.user.ttname || req.user.fbname || req.user.username);
+		let auth = {
+			username: req.user.ttname || req.user.fbname || req.user.username,
+			id: req.user._id
+		}
+	   	res.status(200).send(auth);
 	} else {
-		res.status(200).send('')
+		res.status(200).send({})
 	}
 
 })

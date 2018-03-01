@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import {connect} from 'react-redux';
 import {HashRouter, BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import {getGames} from '../actions.js';
@@ -7,11 +8,18 @@ import {getGames} from '../actions.js';
 class GameInfo extends React.Component{
 	constructor(props){
 		super(props);
-		props.dispatch(getGames())
+		this.deleteComment = this::this.deleteComment;
+
+		props.dispatch(getGames());
 	}
 
-	componentDidMount(){
-		
+	deleteComment(commentId, gameId) {
+		axios.patch('/games/comments', {commentId, gameId})
+		.then(res => {
+			this.props.dispatch(getGames());
+		})
+		.catch(err => console.log(err))
+
 	}
 
 	render(){
@@ -23,17 +31,21 @@ class GameInfo extends React.Component{
 				{	
 					game.comments && game.comments.map((c,i) => (
 						<div key={i} style={styles.comment}>
-							rating: {c.rating} by {c.author}
-							<p>
-								{c.comment}
-							</p>
+							rating: {c.rating}  
+							by {c.author.fbname || c.author.ttname || c.author.username}
+							<p>{c.comment}</p>
+							{
+								authInfo.id == c.author._id && 
+								<button onClick={this.deleteComment.bind(this, c._id, game._id)}>Delete</button>
+							}
+							created at {c.createdAt}
 						</div>
 					))
 				}
 				<form method='POST' action='/games/comments'>
 					<input type='number' name='rating' className='form-control' min='1' max='10' placeholder='rating' required/><br/>
 					<input type='text' name='comment' className='form-control' placeholder='any comments' required/><br/>
-					<input type='hidden' name='author' value={authInfo.username}/>
+					<input type='hidden' name='author' value={authInfo.id}/>
 					<input type='hidden' name='route' value={location.pathname}/>
 					<input type='hidden' name='gameId' value={game._id}/>
 					<input type='submit' name='submit' value='submit' className='btn btn-success'/>
@@ -44,7 +56,7 @@ class GameInfo extends React.Component{
 }
 
 const mapStateToProps = (state,{match}) => {
-	const { gameName } = match.params 
+	const { gameName } = match.params;
 	const { authInfo } = state;
 	const { items } = state.games;
 	const game = items.find(g => g.name == gameName)
