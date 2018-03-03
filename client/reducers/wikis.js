@@ -1,28 +1,29 @@
-const games = (state = {
+const wikis = (state = {
 	isFetching: false,
 	didInvalidate: false,
-  	items: []
+  	items: {}
 }, action) => {
 	switch (action.type) {
-
-		case 'REQUEST_GAMES':
+		case 'REQUEST_WIKI':
 			return {
 				...state,
 				isFetching: true,
 				didInvalidate: false
 			}
 
-		case 'RECEIVE_GAMES':
+		case 'RECEIVE_WIKI':
 			return {
 				isFetching: false,
 				didInvalidate: false,
-				items: action.games,
-				lastUpdated: action.receivedAt
+				items: {
+					...state.items,
+					[action.gameName]: action.wiki
+				}
 			}
-			
+
 		default:
 			return state
 	}
 }
 
-export default games
+export default wikis

@@ -12,7 +12,6 @@ export const updateKeyWord = (keyWord) => ({
 
 export const getGames = () => (dispatch, getState) => {
 	dispatch(requestGames());
-
 	return axios.get('/games')
 		.then(res => {
 			let {data} = res;

@@ -3,7 +3,7 @@ var User = require('./schemas/user.js');
 var Comment = require('./schemas/comment.js');
 
 
-Comment.find({}, (err, data) => {
+Game.find({}, (err, data) => {
 	console.log(err || data);
 });
 
@@ -17,7 +17,7 @@ Comment.find({}, (err, data) => {
 // 	});	
 // });
 
-// Game.update({}, { $set: { comments: []}}, { multi: true },
+// Game.update({name: 'Tale of Wuxia'}, { $set: { name: '侠客风云传'}},
 // 	(err, data) => {
 // 	console.log(data)
 // });	

@@ -2,12 +2,11 @@ import React from 'react';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
-import {updateKeyWord} from '../actions.js';
 import PropTypes from 'prop-types';
-import {getGames} from '../actions.js'
+import {updateKeyWord, getGames} from '../actions'
 
 
-export let SearchBox = ({dispatch}) => {
+let SearchBox = ({dispatch}) => {
 	let input;
 
 	return (
@@ -20,7 +19,7 @@ export let SearchBox = ({dispatch}) => {
 					} 
 				}
 				style={styles.input} 
-				ref={node => {
+				ref={node => { 
 	         		input = node
 	        	}}
 			/>
@@ -50,11 +49,11 @@ export class Games extends React.Component{
 	render(){ 
 		let {games} = this.props;
 		return (
-			<div>
+			<div style={styles.games}>
 				<SearchBox />
-				<div className='container' style={styles.box}>
+				<div style={styles.box}>
 					{
-						games.map((info, i) => (
+						games.map((info, i) =>(
 							<div key={i} style={styles.frame} >
 								<Link to={`/games/${info.name}`} 
 			        			style={{textDecoration: 'none'}}>
@@ -72,11 +71,29 @@ export class Games extends React.Component{
 	}
 }
 
+const fontFamily = [
+	'Hind Siliguri, sans-serif',
+	'Mina, sans-serif',
+	'Raleway, sans-serif',
+	'Indie Flower, cursive',
+	'Acme, sans-serif',
+	'Nunito, sans-serif',
+	'Dancing Script, cursive',
+	'Berkshire Swash, cursive',
+	'Orbitron, sans-serif',
+	'Tangerine, cursive',
+	'Audiowide, cursive',
+	'VT323, monospace',
+	'Special Elite, cursive',
+	'Marck Script, cursive',
+	'Cinzel Decorative, cursive',
+	'Playfair Display SC, serif'
+]
 
 const styles = {};
 
 styles.input = {
-	marginTop: '60px'
+	maxWidth: '70%'
 }
 
 styles.box = {
@@ -99,5 +116,10 @@ styles.img = {
 styles.title = {
 	color: 'white',
 	textAlign: 'center',
-	fontSize: '18px'
+	fontSize: '18px',
+	fontFamily: 'Mina, sans-serif'
+}
+
+styles.games = {
+	width: '75%'
 }

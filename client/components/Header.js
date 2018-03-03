@@ -24,12 +24,12 @@ export default class Header extends React.Component{
 			if(y == 0){
 				$("#header").css({visibility: 'visible'});
 				$("#header").css({opacity: 1});
-				$("#header").css({height: '50px'});
+				$("#header").css({height: '50px', background: 'rgba(1,1,1,0.1)', fontSize: '130%'});
 			}else if (y < this.props.y){
 				$("#header").css({visibility: 'visible'});
 				$("#header").css({opacity: 1});
 			}else{
-				$("#header").css({height: '40px'});
+				$("#header").css({height: '40px', background: 'rgba(1,1,1,0.5)', fontSize: '100%'});
 				$("#header").css({opacity: 0});
 				$("#header").css({visibility: 'hidden'})
 			}	
@@ -60,14 +60,15 @@ export default class Header extends React.Component{
 	render(){
 		let {auth} = this.props
 		return (
-			<div id='header' style={styles.box}>
-				<Link to='/'>
-					<img src="Ragnaros.png" style={styles.img}/>
-				</Link>
+			<header id='header' style={styles.box}>
 				<div>
-					<Link to="/r/r">
-					O
-			        </Link>
+					<Link style={styles.link} to="/">HOME</Link>
+				</div>
+				<div>
+					<Link style={styles.link} to="/reddits">REDDITS</Link>
+				</div>
+				<div>
+					<Link style={styles.link} to="/articles">ARTICLES</Link>
 				</div>
 				{
 					auth.username
@@ -76,35 +77,39 @@ export default class Header extends React.Component{
 								Hi {auth.username}
 							</button>
 						)
-					: (<div><Link to='/auth'>Login</Link></div>)
+					: (<div><Link style={styles.link} to='/auth'>Login</Link></div>)
 				}
 				
-			</div>
+			</header>
 		)
 	}
 };
 
 const styles = {};
 styles.box = {
-	background: 'rgba(111,111,111,0.3)',
+	background: 'rgba(1,1,1,0)',
 	height: '50px',
 	position: 'fixed',
 	top: 0,
 	right: 0,
   	left: 0,
   	zIndex: 1030,
-	color: 'white',
 	display: 'flex',
 	flexFlow: 'row',
 	flexWrap: 'nowrap',
 	justifyContent: 'space-around',
-	alignItems: 'center',
-	borderRadius: '0.5em',
-	boxShadow: '0px 0px 20px 0px white, 0px 0px 30px 0px white inset'
+	alignItems: 'center'
 }
 
 styles.img = {
 	border: '2px',
 	borderRadius: '1em',
 	height: '100%'
+}
+
+styles.link = {
+	textDecoration: 'none',
+	color: 'white',
+	fontSize: '130%',
+	fontFamily: 'Hind Siliguri, sans-serif'
 }

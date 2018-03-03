@@ -30,11 +30,6 @@ const mapStateToProps = state => {
 	}
 }
 
-// const mapDispatchToProps = (dispatch) => ({
-//   getGames
-// })
-
-
 const FilterGameList = connect(
 	mapStateToProps
 )(Games)
