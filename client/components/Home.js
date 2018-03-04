@@ -29,15 +29,17 @@ class Slide extends React.Component {
 		if (games.items.length){
 			let images = games.items.map(g => g.image);
 			return (
-				<Swiper {...params}>
-				{
-					images.map((url, i) => (
-						<div key={i} style={styles.frame}>
-							<img src={url} style={styles.pic}/>
-						</div>
-					))
-				}
-				</Swiper>
+				<div style={styles.slide}>
+					<Swiper {...params}>
+					{
+						images.map((url, i) => (
+							<div key={i} style={styles.frame}>
+								<img src={url} style={styles.pic}/>
+							</div>
+						))
+					}
+					</Swiper>
+				</div>
 			)
 		} else {
 			return <div></div>
@@ -110,7 +112,15 @@ styles.box = {
 	flexWrap: 'wrap',
 	justifyContent: 'space-between',
 	alignItems: 'flex-start',
-	padding: '0 20px'
+	padding: '0 20px',
+	marginTop: '10px'
+}
+
+styles.slide = {
+	background: 'rgba(100,100,100,0.44)',
+	height: '50%',
+	width: '90%',
+	margin: '50px auto'
 }
 
 styles.frame = {
@@ -123,7 +133,7 @@ styles.frame = {
 }
 
 styles.pic = {
-	maxHeight:'105%',
+	maxHeight:'100%',
 	maxWidth: '100%'
 }
 

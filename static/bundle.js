@@ -39697,15 +39697,19 @@ var Slide = function (_React$Component) {
 					return g.image;
 				});
 				return _react2.default.createElement(
-					_reactIdSwiper2.default,
-					params,
-					images.map(function (url, i) {
-						return _react2.default.createElement(
-							'div',
-							{ key: i, style: styles.frame },
-							_react2.default.createElement('img', { src: url, style: styles.pic })
-						);
-					})
+					'div',
+					{ style: styles.slide },
+					_react2.default.createElement(
+						_reactIdSwiper2.default,
+						params,
+						images.map(function (url, i) {
+							return _react2.default.createElement(
+								'div',
+								{ key: i, style: styles.frame },
+								_react2.default.createElement('img', { src: url, style: styles.pic })
+							);
+						})
+					)
 				);
 			} else {
 				return _react2.default.createElement('div', null);
@@ -39774,7 +39778,15 @@ styles.box = {
 	flexWrap: 'wrap',
 	justifyContent: 'space-between',
 	alignItems: 'flex-start',
-	padding: '0 20px'
+	padding: '0 20px',
+	marginTop: '10px'
+};
+
+styles.slide = {
+	background: 'rgba(100,100,100,0.44)',
+	height: '50%',
+	width: '90%',
+	margin: '50px auto'
 };
 
 styles.frame = {
@@ -39787,7 +39799,7 @@ styles.frame = {
 };
 
 styles.pic = {
-	maxHeight: '105%',
+	maxHeight: '100%',
 	maxWidth: '100%'
 };
 
