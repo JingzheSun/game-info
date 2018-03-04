@@ -3,7 +3,7 @@ var User = require('./schemas/user.js');
 var Comment = require('./schemas/comment.js');
 
 
-Game.find({}, (err, data) => {
+User.find({}, (err, data) => {
 	console.log(err || data);
 });
 

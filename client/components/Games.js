@@ -71,25 +71,6 @@ export class Games extends React.Component{
 	}
 }
 
-const fontFamily = [
-	'Hind Siliguri, sans-serif',
-	'Mina, sans-serif',
-	'Raleway, sans-serif',
-	'Indie Flower, cursive',
-	'Acme, sans-serif',
-	'Nunito, sans-serif',
-	'Dancing Script, cursive',
-	'Berkshire Swash, cursive',
-	'Orbitron, sans-serif',
-	'Tangerine, cursive',
-	'Audiowide, cursive',
-	'VT323, monospace',
-	'Special Elite, cursive',
-	'Marck Script, cursive',
-	'Cinzel Decorative, cursive',
-	'Playfair Display SC, serif'
-]
-
 const styles = {};
 
 styles.input = {

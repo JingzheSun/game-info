@@ -4,7 +4,9 @@ import search from './search.js';
 import header from './header.js';
 import authError from './authError.js';
 import authInfo from './authInfo.js';
-import wikis from './wikis.js'
+import wikis from './wikis.js';
+import rating from './rating.js';
+
 
 const gameApp = combineReducers({
 	games,
@@ -12,7 +14,8 @@ const gameApp = combineReducers({
 	header,
 	authError,
 	authInfo,
-	wikis
+	wikis,
+	rating
 })
 
 export default gameApp

@@ -65,10 +65,10 @@ export default class Auth extends React.Component{
 					</form>
 
 					<span style={{marginRight: '20px'}}>
-						<a href='/auth/twitter'><i className="fab fa-twitter-square"></i></a>
+						<a href='/auth/twitter'><i className="fab fa-twitter-square" style={styles.icon}></i></a>
 					</span>
 					<span>
-						<a href='/auth/facebook'><i className="fab fa-facebook"></i></a>
+						<a href='/auth/facebook'><i className="fab fa-facebook" style={styles.icon}></i></a>
 					</span>
 				</div>
 
@@ -115,4 +115,9 @@ styles.hr = {
 
 styles.err ={
 	color: 'red'
+}
+
+styles.icon = {
+	fontSize: '40px',
+	color: 'rgb(0,150,252)'
 }
