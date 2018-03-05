@@ -2,7 +2,7 @@
 
 A very primary gaming forum.
 
-Website: https://gameinfo.sunjingzhe.com/
+Website: http://gameinfo.sunjingzhe.com/
 
 
 Tech Stack
