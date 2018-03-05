@@ -40,5 +40,16 @@ i{
 }
 
 #header{
+	transition: 0.5s;
+}
+
+#gameFilter {
+	width: 30%;
+	display: inline;
 	transition: 0.6s;
+}
+
+#gameFilter:focus {
+	width: 60%;
+	
 }

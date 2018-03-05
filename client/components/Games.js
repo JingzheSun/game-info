@@ -10,8 +10,10 @@ let SearchBox = ({dispatch}) => {
 	let input;
 
 	return (
-		<div className='container'>
+		<div >
+			<img src='/Zb.png' style={{height: '90px', display: 'inline'}} />
 			<input type='text' 
+				id = 'gameFilter' 
 				className='form-control' 
 				placeholder='game keyword'
 				onChange={() => {
@@ -23,6 +25,7 @@ let SearchBox = ({dispatch}) => {
 	         		input = node
 	        	}}
 			/>
+			<img src='/Zb.png' style={{height: '90px', display: 'inline', transform: 'rotateY(180deg)'}} />
 		</div>
 	)
 }
@@ -72,10 +75,6 @@ export class Games extends React.Component{
 }
 
 const styles = {};
-
-styles.input = {
-	maxWidth: '70%'
-}
 
 styles.box = {
 	display: 'flex',

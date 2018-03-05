@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-
+// fetch games from database
 export const getGames = () => (dispatch, getState) => {
 	dispatch(requestGames());
 	return axios.get('/games')
@@ -19,6 +19,7 @@ export const receiveGames = (games) => ({
   	receivedAt: Date.now()
 })
 
+//fetch wiki by api
 export const getWiki = (gameName) => (dispatch, getState) => {
 	dispatch(requestWiki());
 	let url = `https://en.wikipedia.org/w/api.php?action=query&titles=${gameName}&prop=extracts&format=json&formatversion=2&origin=*&redirects=1&converttitles=1`
@@ -42,4 +43,39 @@ export const receiveWiki = (wiki, gameName) => ({
 	type: 'RECEIVE_WIKI',
   	wiki,
   	gameName
+})
+
+// fetch Subreddits by api
+export const getSubreddits = (subreddits) => (dispatch, getState) => {
+	dispatch(requestSubreddits());
+	let url = `https://www.reddit.com/r/${subreddits}.json`;
+	return axios.get(url)
+		.then(res => {
+			let content = res.data.data.children;
+			dispatch(receiveSubreddits(content, subreddits))
+		})
+		.catch(err => {
+			alert("Subreddit doesn't exist");
+			dispatch(deleteSubreddits(subreddits))
+		})
+}
+export const requestSubreddits = () => ({
+  	type: 'REQUEST_SUBREDDITS'
+})
+export const receiveSubreddits = (content, subreddits) => ({
+	type: 'RECEIVE_SUBREDDITS',
+  	content,
+  	subreddits
+})
+export const addSubreddits = (subreddits) => ({
+  	type: 'ADD_SUBREDDITS',
+  	subreddits
+})
+export const changeSubreddits = (subreddits) => ({
+	type: 'CHANGE_SUBREDDITS',
+  	subreddits
+})
+export const deleteSubreddits = (subreddits) => ({
+	type: 'DELETE_SUBREDDITS',
+  	subreddits
 })

@@ -11,7 +11,7 @@ const params = {
     loop: true,
     autoplay: {
         delay: 3000,
-        disableOnInteraction: true
+        disableOnInteraction: false
     },
     pagination: {
         el: '.swiper-pagination',
@@ -27,14 +27,19 @@ class Slide extends React.Component {
 	render() {
 		let {games} = this.props;
 		if (games.items.length){
-			let images = games.items.map(g => g.image);
+			let images = games.items.map(g => ({
+				url: g.image,
+				name: g.name
+			}));
 			return (
 				<div style={styles.slide}>
 					<Swiper {...params}>
 					{
-						images.map((url, i) => (
+						images.map((g, i) => (
 							<div key={i} style={styles.frame}>
-								<img src={url} style={styles.pic}/>
+								<Link to={`/games/${g.name}`}>
+									<img src={g.url} style={styles.pic}/>
+								</Link>
 							</div>
 						))
 					}
@@ -118,7 +123,7 @@ styles.box = {
 
 styles.slide = {
 	background: 'rgba(100,100,100,0.44)',
-	height: '50%',
+	height: '65%',
 	width: '90%',
 	margin: '50px auto'
 }

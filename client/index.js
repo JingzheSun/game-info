@@ -5,7 +5,6 @@ import thunk from 'redux-thunk';
 import { createLogger } from 'redux-logger';
 import { Provider } from 'react-redux';
 import {HashRouter, BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-//import 'bootstrap/dist/css/bootstrap.css';
 import reducer from './reducers'
 import App from './components/App.js';
 

@@ -65,7 +65,7 @@ export default class Header extends React.Component{
 					<Link style={styles.link} to="/">HOME</Link>
 				</div>
 				<div>
-					<Link style={styles.link} to="/reddits">REDDITS</Link>
+					<Link style={styles.link} to="/reddits">SUBREDDITS</Link>
 				</div>
 				<div>
 					<Link style={styles.link} to="/articles">ARTICLES</Link>

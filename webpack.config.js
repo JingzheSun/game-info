@@ -37,11 +37,11 @@ module.exports = {
         tls: 'empty'
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery",
-            'window.$':'jquery',
-            'window.jQuery':'jquery'
-        })
+        // new webpack.ProvidePlugin({
+        //     $: "jquery",
+        //     jQuery: "jquery",
+        //     'window.$':'jquery',
+        //     'window.jQuery':'jquery'
+        // })
     ]
 };

@@ -6,24 +6,26 @@ import {getGames, getWiki} from '../actions';
 import Comments from './Comments.js';
 import StarRating from './StarRating.js';
 
-const GameImage = ({image}) => (
-	<img src={image} style={styles.pic}/>
-)
+// import GiantBomb from 'giant-bomb';
+// var options = {
+//   query: 'Metal Gear Solid',
+//   resources: ['game', 'video', 'franchise'],
+//   offset: 10,
+//   limit: 20,
+//   fields: ['name', 'aliases', 'platforms', 'release-date']
+// };
 
-const Wiki = ({wiki}) => (
-	wiki ? <div dangerouslySetInnerHTML={{__html: wiki}}></div>	: <h1>No wiki yet</h1>
-)
+// var gb = new GiantBomb('9f183f7d0c5315d108c2a56a2e15662b6a0c88a3', 'gameappjsAgent');
+// gb.search({query: 'Diablo', limit: 10, format: 'jsonp'}, 
+// 	function(error, response, body){
+// 		if(!error && response.statusCode == 200){
+// 			body.results.forEach(game => {
+// 				console.log(game);
+// 			});
+// 		}
+// 	}
+// );
 
-const GameComments = ({game, authInfo}) => (
-	<div>
-		<h1>Comments</h1>
-	{	
-		game.comments && game.comments.map((c,i) => (
-			<Comments key={i} game={game} c={c} authInfo={authInfo}/>
-		))
-	}
-	</div>
-)
 
 const AddComment = ({gameId, route, authId, rating}) => (
 	<form method='POST' action='/games/comments'>
@@ -34,17 +36,14 @@ const AddComment = ({gameId, route, authId, rating}) => (
 		<input type='hidden' name='route' value={route || ''}/>
 		<input type='hidden' name='gameId' value={gameId || ''}/>
 		<input type='hidden' name='rating' value={rating || 5}/>
-		<input type='submit' name='submit' value='submit' className='btn btn-success'/>
 	</form>
 )
 
-class GameInfo extends React.Component{
+class Articles extends React.Component{
 	constructor(props){
 		super(props);
 
 		let name = props.match.params.gameName;
-		props.dispatch(getWiki(name));
-		props.dispatch(getGames());
 	}
 
 	render(){
@@ -52,9 +51,6 @@ class GameInfo extends React.Component{
 		let game = this.props.game || {};
 		return (
 			<div className='container' style={styles.container}>
-				<GameImage {...game}/>	
-				<Wiki wiki={wiki}/><hr style={{background: 'white'}}/>
-				<GameComments game={game} authInfo={authInfo} />
 				<AddComment gameId={game._id} route={location.pathname} authId={authInfo.id} rating={rating}/>
 			</div>
 		)
@@ -73,7 +69,7 @@ const mapStateToProps = (state, { match }) => {
 
 export default connect(
 	mapStateToProps
-)(GameInfo)
+)(Articles)
 
 const styles = {}
 
