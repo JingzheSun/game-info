@@ -32,6 +32,28 @@ const anime = (state = {
 					items: action.animeList
 				}
 			}
+
+		case 'REQUEST_ANIMEFULLLIST':
+			return {
+				...state,
+				animeFullList:{
+					...state.animeFullList,
+					isFetching: true,
+					didInvalidate: false
+				}
+			}
+
+		case 'RECEIVE_ANIMEFULLLIST':
+			return {
+				...state,
+				animeFullList: {
+					...state.animeFullList,
+					isFetching: false,
+					didInvalidate: false,
+					items: action.animeFullList
+				}
+			}
+			
 		default:
 			return state
 	}

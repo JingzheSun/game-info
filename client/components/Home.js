@@ -69,7 +69,7 @@ class AnimeList extends React.Component{
 					{
 						this.props.animeList.items.map((info,i) => (
 							<a key={i} href={`https://bangumi.bilibili.com/anime/${info.season_id}`} style={styles.animeLink}>
-								<div className='animeBox'>
+								<div className='animeListBox'>
 									<img src={info.square_cover} style={styles.animeImg}/>
 									<p style={styles.animeInfo}>{info.title}</p> 
 								</div>

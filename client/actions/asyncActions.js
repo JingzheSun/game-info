@@ -84,11 +84,11 @@ export const deleteSubreddits = (subreddits) => ({
 })
 
 
-// fetch games from database
+// fetch anime list from b
 export const getAnimeList = () => dispatch => {
 	dispatch(requestAnimeList());
 	let cors = 'https://cors-anywhere.herokuapp.com/';
-	let url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver?callback=bangumiRankCallback';
+	let url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver';
 	return axios.get(cors + url)
 		.then(res => {
 			let str = res.data.slice(20,-2);
@@ -103,4 +103,26 @@ export const requestAnimeList = () => ({
 export const receiveAnimeList = (animeList) => ({
   	type: 'RECEIVE_ANIMELIST',
   	animeList
+})
+
+
+// fetch full anime list from b
+export const getAnimeFullList = () => dispatch => {
+	dispatch(requestAnimeFullList());
+	let cors = 'https://cors-anywhere.herokuapp.com/';
+	let url = 'https://bangumi.bilibili.com/jsonp/timeline_v2_global.ver';
+	return axios.get(cors + url)
+		.then(res => {
+			let str = res.data.slice(9,-2);
+			let animeList = JSON.parse(str).result;
+			dispatch(receiveAnimeFullList(animeList));
+		})
+		.catch(err => console.log(err))
+}
+export const requestAnimeFullList = () => ({
+  	type: 'REQUEST_ANIMEFULLLIST'
+})
+export const receiveAnimeFullList = (animeFullList) => ({
+  	type: 'RECEIVE_ANIMEFULLLIST',
+  	animeFullList
 })

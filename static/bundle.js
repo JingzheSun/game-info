@@ -918,6 +918,35 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 "use strict";
 
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _asyncActions = __webpack_require__(161);
+
+var async = _interopRequireWildcard(_asyncActions);
+
+var _authActions = __webpack_require__(162);
+
+var auth = _interopRequireWildcard(_authActions);
+
+var _UIActions = __webpack_require__(163);
+
+var UI = _interopRequireWildcard(_UIActions);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var actions = _extends({}, async, auth, UI);
+
+for (var f in actions) {
+	module.exports[f] = actions[f];
+}
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -952,35 +981,6 @@ emptyFunction.thatReturnsArgument = function (arg) {
 };
 
 module.exports = emptyFunction;
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _asyncActions = __webpack_require__(161);
-
-var async = _interopRequireWildcard(_asyncActions);
-
-var _authActions = __webpack_require__(162);
-
-var auth = _interopRequireWildcard(_authActions);
-
-var _UIActions = __webpack_require__(163);
-
-var UI = _interopRequireWildcard(_UIActions);
-
-function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
-
-var actions = _extends({}, async, auth, UI);
-
-for (var f in actions) {
-	module.exports[f] = actions[f];
-}
 
 /***/ }),
 /* 11 */
@@ -1349,7 +1349,7 @@ module.exports = emptyObject;
 
 
 
-var emptyFunction = __webpack_require__(9);
+var emptyFunction = __webpack_require__(10);
 
 /**
  * Similar to invariant but only logs a warning if the condition is not met.
@@ -3113,7 +3113,7 @@ module.exports = ExecutionEnvironment;
  * @typechecks
  */
 
-var emptyFunction = __webpack_require__(9);
+var emptyFunction = __webpack_require__(10);
 
 /**
  * Upstream version of event listener. Does not take into account specific
@@ -5448,7 +5448,7 @@ var _reactRedux = __webpack_require__(7);
 
 var _reactRouterDom = __webpack_require__(8);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -5567,7 +5567,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var middlewares = [_reduxThunk2.default];
 // for test only
-middlewares.push((0, _reduxLogger.createLogger)());
+//middlewares.push(createLogger());
 
 var store = (0, _redux.createStore)(_reducers2.default, _redux.applyMiddleware.apply(undefined, middlewares));
 
@@ -5595,7 +5595,7 @@ var store = (0, _redux.createStore)(_reducers2.default, _redux.applyMiddleware.a
  * LICENSE file in the root directory of this source tree.
  */
 
-var m=__webpack_require__(12),n=__webpack_require__(17),p=__webpack_require__(9),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
+var m=__webpack_require__(12),n=__webpack_require__(17),p=__webpack_require__(10),q="function"===typeof Symbol&&Symbol["for"],r=q?Symbol["for"]("react.element"):60103,t=q?Symbol["for"]("react.call"):60104,u=q?Symbol["for"]("react.return"):60105,v=q?Symbol["for"]("react.portal"):60106,w=q?Symbol["for"]("react.fragment"):60107,x="function"===typeof Symbol&&Symbol.iterator;
 function y(a){for(var b=arguments.length-1,e="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,c=0;c<b;c++)e+="\x26args[]\x3d"+encodeURIComponent(arguments[c+1]);b=Error(e+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}
 var z={isMounted:function(){return!1},enqueueForceUpdate:function(){},enqueueReplaceState:function(){},enqueueSetState:function(){}};function A(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}A.prototype.isReactComponent={};A.prototype.setState=function(a,b){"object"!==typeof a&&"function"!==typeof a&&null!=a?y("85"):void 0;this.updater.enqueueSetState(this,a,b,"setState")};A.prototype.forceUpdate=function(a){this.updater.enqueueForceUpdate(this,a,"forceUpdate")};
 function B(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}function C(){}C.prototype=A.prototype;var D=B.prototype=new C;D.constructor=B;m(D,A.prototype);D.isPureReactComponent=!0;function E(a,b,e){this.props=a;this.context=b;this.refs=n;this.updater=e||z}var F=E.prototype=new C;F.constructor=E;m(F,A.prototype);F.unstable_isAsyncReactComponent=!0;F.render=function(){return this.props.children};var G={current:null},H=Object.prototype.hasOwnProperty,I={key:!0,ref:!0,__self:!0,__source:!0};
@@ -5635,7 +5635,7 @@ var _assign = __webpack_require__(12);
 var emptyObject = __webpack_require__(17);
 var invariant = __webpack_require__(14);
 var warning = __webpack_require__(18);
-var emptyFunction = __webpack_require__(9);
+var emptyFunction = __webpack_require__(10);
 var checkPropTypes = __webpack_require__(22);
 
 // TODO: this is special because it gets imported during build.
@@ -7540,7 +7540,7 @@ function now() {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(0),l=__webpack_require__(35),B=__webpack_require__(12),C=__webpack_require__(9),ba=__webpack_require__(36),da=__webpack_require__(37),ea=__webpack_require__(38),fa=__webpack_require__(39),ia=__webpack_require__(40),D=__webpack_require__(17);
+var aa=__webpack_require__(0),l=__webpack_require__(35),B=__webpack_require__(12),C=__webpack_require__(10),ba=__webpack_require__(36),da=__webpack_require__(37),ea=__webpack_require__(38),fa=__webpack_require__(39),ia=__webpack_require__(40),D=__webpack_require__(17);
 function E(a){for(var b=arguments.length-1,c="Minified React error #"+a+"; visit http://facebook.github.io/react/docs/error-decoder.html?invariant\x3d"+a,d=0;d<b;d++)c+="\x26args[]\x3d"+encodeURIComponent(arguments[d+1]);b=Error(c+" for the full message or use the non-minified dev environment for full errors and additional helpful warnings.");b.name="Invariant Violation";b.framesToPop=1;throw b;}aa?void 0:E("227");
 var oa={children:!0,dangerouslySetInnerHTML:!0,defaultValue:!0,defaultChecked:!0,innerHTML:!0,suppressContentEditableWarning:!0,suppressHydrationWarning:!0,style:!0};function pa(a,b){return(a&b)===b}
 var ta={MUST_USE_PROPERTY:1,HAS_BOOLEAN_VALUE:4,HAS_NUMERIC_VALUE:8,HAS_POSITIVE_NUMERIC_VALUE:24,HAS_OVERLOADED_BOOLEAN_VALUE:32,HAS_STRING_BOOLEAN_VALUE:64,injectDOMPropertyConfig:function(a){var b=ta,c=a.Properties||{},d=a.DOMAttributeNamespaces||{},e=a.DOMAttributeNames||{};a=a.DOMMutationMethods||{};for(var f in c){ua.hasOwnProperty(f)?E("48",f):void 0;var g=f.toLowerCase(),h=c[f];g={attributeName:g,attributeNamespace:null,propertyName:f,mutationMethod:null,mustUseProperty:pa(h,b.MUST_USE_PROPERTY),
@@ -7843,7 +7843,7 @@ var invariant = __webpack_require__(14);
 var warning = __webpack_require__(18);
 var ExecutionEnvironment = __webpack_require__(35);
 var _assign = __webpack_require__(12);
-var emptyFunction = __webpack_require__(9);
+var emptyFunction = __webpack_require__(10);
 var EventListener = __webpack_require__(36);
 var getActiveElement = __webpack_require__(37);
 var shallowEqual = __webpack_require__(38);
@@ -24067,7 +24067,7 @@ function createProvider() {
 
 
 
-var emptyFunction = __webpack_require__(9);
+var emptyFunction = __webpack_require__(10);
 var invariant = __webpack_require__(14);
 var warning = __webpack_require__(18);
 var assign = __webpack_require__(12);
@@ -24617,7 +24617,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 
 
 
-var emptyFunction = __webpack_require__(9);
+var emptyFunction = __webpack_require__(10);
 var invariant = __webpack_require__(14);
 var ReactPropTypesSecret = __webpack_require__(23);
 
@@ -27936,6 +27936,24 @@ var anime = function anime() {
 					items: action.animeList
 				})
 			});
+
+		case 'REQUEST_ANIMEFULLLIST':
+			return _extends({}, state, {
+				animeFullList: _extends({}, state.animeFullList, {
+					isFetching: true,
+					didInvalidate: false
+				})
+			});
+
+		case 'RECEIVE_ANIMEFULLLIST':
+			return _extends({}, state, {
+				animeFullList: _extends({}, state.animeFullList, {
+					isFetching: false,
+					didInvalidate: false,
+					items: action.animeFullList
+				})
+			});
+
 		default:
 			return state;
 	}
@@ -28107,7 +28125,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = __webpack_require__(8);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -28211,6 +28229,15 @@ var Header = function (_React$Component) {
 					null,
 					_react2.default.createElement(
 						_reactRouterDom.Link,
+						{ style: styles.link, to: '/animes' },
+						'ANIMES'
+					)
+				),
+				_react2.default.createElement(
+					'div',
+					null,
+					_react2.default.createElement(
+						_reactRouterDom.Link,
 						{ style: styles.link, to: '/articles' },
 						'ARTICLES'
 					)
@@ -28226,7 +28253,7 @@ var Header = function (_React$Component) {
 					_react2.default.createElement(
 						_reactRouterDom.Link,
 						{ style: styles.link, to: '/auth' },
-						'Login'
+						'LOGIN'
 					)
 				)
 			);
@@ -28247,6 +28274,7 @@ var styles = {};
 styles.box = {
 	background: 'rgba(1,1,1,0)',
 	height: '50px',
+	fontSize: '100%',
 	position: 'fixed',
 	top: 0,
 	right: 0,
@@ -29167,7 +29195,7 @@ module.exports = function spread(callback) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-exports.receiveAnimeList = exports.requestAnimeList = exports.getAnimeList = exports.deleteSubreddits = exports.changeSubreddits = exports.addSubreddits = exports.receiveSubreddits = exports.requestSubreddits = exports.getSubreddits = exports.receiveWiki = exports.requestWiki = exports.getWiki = exports.receiveGames = exports.requestGames = exports.getGames = undefined;
+exports.receiveAnimeFullList = exports.requestAnimeFullList = exports.getAnimeFullList = exports.receiveAnimeList = exports.requestAnimeList = exports.getAnimeList = exports.deleteSubreddits = exports.changeSubreddits = exports.addSubreddits = exports.receiveSubreddits = exports.requestSubreddits = exports.getSubreddits = exports.receiveWiki = exports.requestWiki = exports.getWiki = exports.receiveGames = exports.requestGames = exports.getGames = undefined;
 
 var _axios = __webpack_require__(11);
 
@@ -29280,12 +29308,12 @@ var deleteSubreddits = exports.deleteSubreddits = function deleteSubreddits(subr
 	};
 };
 
-// fetch games from database
+// fetch anime list from b
 var getAnimeList = exports.getAnimeList = function getAnimeList() {
 	return function (dispatch) {
 		dispatch(requestAnimeList());
 		var cors = 'https://cors-anywhere.herokuapp.com/';
-		var url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver?callback=bangumiRankCallback';
+		var url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver';
 		return _axios2.default.get(cors + url).then(function (res) {
 			var str = res.data.slice(20, -2);
 			var animeList = JSON.parse(str).result.list;
@@ -29304,6 +29332,33 @@ var receiveAnimeList = exports.receiveAnimeList = function receiveAnimeList(anim
 	return {
 		type: 'RECEIVE_ANIMELIST',
 		animeList: animeList
+	};
+};
+
+// fetch full anime list from b
+var getAnimeFullList = exports.getAnimeFullList = function getAnimeFullList() {
+	return function (dispatch) {
+		dispatch(requestAnimeFullList());
+		var cors = 'https://cors-anywhere.herokuapp.com/';
+		var url = 'https://bangumi.bilibili.com/jsonp/timeline_v2_global.ver';
+		return _axios2.default.get(cors + url).then(function (res) {
+			var str = res.data.slice(9, -2);
+			var animeList = JSON.parse(str).result;
+			dispatch(receiveAnimeFullList(animeList));
+		}).catch(function (err) {
+			return console.log(err);
+		});
+	};
+};
+var requestAnimeFullList = exports.requestAnimeFullList = function requestAnimeFullList() {
+	return {
+		type: 'REQUEST_ANIMEFULLLIST'
+	};
+};
+var receiveAnimeFullList = exports.receiveAnimeFullList = function receiveAnimeFullList(animeFullList) {
+	return {
+		type: 'RECEIVE_ANIMEFULLLIST',
+		animeFullList: animeFullList
 	};
 };
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(4)))
@@ -29398,11 +29453,15 @@ var _GameInfo = __webpack_require__(173);
 
 var _GameInfo2 = _interopRequireDefault(_GameInfo);
 
-var _ManageSubreddits = __webpack_require__(175);
+var _Animes = __webpack_require__(175);
+
+var _Animes2 = _interopRequireDefault(_Animes);
+
+var _ManageSubreddits = __webpack_require__(176);
 
 var _ManageSubreddits2 = _interopRequireDefault(_ManageSubreddits);
 
-var _AuthError = __webpack_require__(177);
+var _AuthError = __webpack_require__(178);
 
 var _AuthError2 = _interopRequireDefault(_AuthError);
 
@@ -29432,6 +29491,7 @@ var Body = function (_React$Component) {
 				_react2.default.createElement(_reactRouterDom.Route, { path: '/', exact: true, component: _Home2.default }),
 				_react2.default.createElement(_reactRouterDom.Route, { path: '/reddits', component: _ManageSubreddits2.default }),
 				_react2.default.createElement(_reactRouterDom.Route, { path: '/articles', component: R }),
+				_react2.default.createElement(_reactRouterDom.Route, { path: '/animes', component: _Animes2.default }),
 				_react2.default.createElement(_reactRouterDom.Route, { path: '/auth', component: _AuthError2.default }),
 				_react2.default.createElement(_reactRouterDom.Route, { path: '/games/:gameName', component: _GameInfo2.default })
 			);
@@ -29485,7 +29545,7 @@ var _FilterGameList = __webpack_require__(169);
 
 var _FilterGameList2 = _interopRequireDefault(_FilterGameList);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -29582,7 +29642,7 @@ var AnimeList = function (_React$Component2) {
 				{ style: styles.animeList },
 				_react2.default.createElement(
 					'h2',
-					null,
+					{ style: { marginLeft: '20px' } },
 					'Anime'
 				),
 				_react2.default.createElement('hr', null),
@@ -29595,7 +29655,7 @@ var AnimeList = function (_React$Component2) {
 							{ key: i, href: 'https://bangumi.bilibili.com/anime/' + info.season_id, style: styles.animeLink },
 							_react2.default.createElement(
 								'div',
-								{ className: 'animeBox' },
+								{ className: 'animeListBox' },
 								_react2.default.createElement('img', { src: info.square_cover, style: styles.animeImg }),
 								_react2.default.createElement(
 									'p',
@@ -37899,7 +37959,7 @@ var _propTypes = __webpack_require__(2);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -37962,7 +38022,7 @@ var Games = exports.Games = function (_React$Component) {
 				{ style: styles.games },
 				_react2.default.createElement(
 					'h2',
-					null,
+					{ style: { marginLeft: '20px' } },
 					'Games'
 				),
 				_react2.default.createElement('hr', null),
@@ -38155,7 +38215,7 @@ var _reactRedux = __webpack_require__(7);
 
 var _reactRouterDom = __webpack_require__(8);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 var _Comments = __webpack_require__(174);
 
@@ -38342,7 +38402,7 @@ var _StarRating = __webpack_require__(67);
 
 var _StarRating2 = _interopRequireDefault(_StarRating);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38451,9 +38511,129 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _axios = __webpack_require__(11);
+
+var _axios2 = _interopRequireDefault(_axios);
+
 var _reactRedux = __webpack_require__(7);
 
-var _Subreddits = __webpack_require__(176);
+var _actions = __webpack_require__(9);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Animes = function (_React$Component) {
+	_inherits(Animes, _React$Component);
+
+	function Animes(props) {
+		_classCallCheck(this, Animes);
+
+		var _this = _possibleConstructorReturn(this, (Animes.__proto__ || Object.getPrototypeOf(Animes)).call(this, props));
+
+		props.dispatch((0, _actions.getAnimeFullList)());
+		return _this;
+	}
+
+	_createClass(Animes, [{
+		key: 'render',
+		value: function render() {
+			var animes = this.props.animes;
+
+			return _react2.default.createElement(
+				'div',
+				{ style: styles.body, className: 'container' },
+				_react2.default.createElement(
+					'h1',
+					{ style: { marginLeft: '20px' } },
+					'Animes'
+				),
+				_react2.default.createElement('hr', null),
+				_react2.default.createElement(
+					'div',
+					{ style: styles.box },
+					animes.map(function (info, i) {
+						return _react2.default.createElement(
+							'div',
+							{ key: i, className: 'animeBox' },
+							_react2.default.createElement(
+								'a',
+								{ href: 'https://bangumi.bilibili.com/anime/' + info.season_id, style: styles.animeLink },
+								_react2.default.createElement('img', { src: info.cover, style: styles.img }),
+								_react2.default.createElement(
+									'h5',
+									{ style: { textAlign: 'center' } },
+									info.title
+								)
+							)
+						);
+					})
+				)
+			);
+		}
+	}]);
+
+	return Animes;
+}(_react2.default.Component);
+
+var mapStateToProps = function mapStateToProps(state) {
+	var anime = state.anime;
+
+	return { animes: anime.animeFullList.items };
+};
+
+exports.default = (0, _reactRedux.connect)(mapStateToProps)(Animes);
+
+
+var styles = {};
+
+styles.box = {
+	display: 'flex',
+	flexFlow: 'row',
+	flexWrap: 'wrap',
+	justifyContent: 'space-between',
+	alignItems: 'center'
+};
+
+styles.body = {
+	color: 'white',
+	marginTop: '50px'
+};
+
+styles.animeLink = {
+	textDecoration: 'none',
+	color: 'lightblue'
+};
+
+styles.img = {
+	maxHeight: '280px',
+	borderRadius: '0.3em'
+};
+
+/***/ }),
+/* 176 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _reactRedux = __webpack_require__(7);
+
+var _Subreddits = __webpack_require__(177);
 
 var _Subreddits2 = _interopRequireDefault(_Subreddits);
 
@@ -38471,7 +38651,7 @@ var ManageSubreddits = (0, _reactRedux.connect)(mapStateToProps)(_Subreddits2.de
 exports.default = ManageSubreddits;
 
 /***/ }),
-/* 176 */
+/* 177 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38487,7 +38667,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -38731,7 +38911,7 @@ styles.block = {
 };
 
 /***/ }),
-/* 177 */
+/* 178 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38743,7 +38923,7 @@ Object.defineProperty(exports, "__esModule", {
 
 var _reactRedux = __webpack_require__(7);
 
-var _Auth = __webpack_require__(178);
+var _Auth = __webpack_require__(179);
 
 var _Auth2 = _interopRequireDefault(_Auth);
 
@@ -38758,7 +38938,7 @@ var AuthError = (0, _reactRedux.connect)(mapStateToProps)(_Auth2.default);
 exports.default = AuthError;
 
 /***/ }),
-/* 178 */
+/* 179 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -38784,7 +38964,7 @@ var _propTypes2 = _interopRequireDefault(_propTypes);
 
 var _reactRouterDom = __webpack_require__(8);
 
-var _actions = __webpack_require__(10);
+var _actions = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 

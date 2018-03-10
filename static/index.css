@@ -43,15 +43,25 @@ hr {
 	height: 190px;
 }
 
-.animeBox {
+.animeListBox {
 	padding: 10px;
 	margin: 5px auto;
 	transition: 0.3s;
 	border: 2px solid transparent;
 }
 
-.animeBox:hover { 
+.animeListBox:hover { 
 	border: 2px solid orange;
+}
+
+.animeBox {
+	padding: 5px 0;
+	transition: 0.3s;
+}
+
+.animeBox:hover { 
+	transform: scale(1.1,1.1);
+	filter: hue-rotate(-30deg);
 }
 
 #header{

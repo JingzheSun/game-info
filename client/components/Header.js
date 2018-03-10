@@ -68,6 +68,9 @@ export default class Header extends React.Component{
 					<Link style={styles.link} to="/reddits">SUBREDDITS</Link>
 				</div>
 				<div>
+					<Link style={styles.link} to="/animes">ANIMES</Link>
+				</div>
+				<div>
 					<Link style={styles.link} to="/articles">ARTICLES</Link>
 				</div>
 				{
@@ -77,7 +80,7 @@ export default class Header extends React.Component{
 								Hi {auth.username}
 							</button>
 						)
-					: (<div><Link style={styles.link} to='/auth'>Login</Link></div>)
+					: (<div><Link style={styles.link} to='/auth'>LOGIN</Link></div>)
 				}
 				
 			</header>
@@ -89,6 +92,7 @@ const styles = {};
 styles.box = {
 	background: 'rgba(1,1,1,0)',
 	height: '50px',
+	fontSize: '100%',
 	position: 'fixed',
 	top: 0,
 	right: 0,
