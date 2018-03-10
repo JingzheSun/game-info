@@ -15,6 +15,10 @@ i{
 	color: rgba(41,76,234,1);
 }
 
+hr {
+	background: white;
+}
+
 .abc{
 	height: 200px;
 }
@@ -37,6 +41,17 @@ i{
 	filter: none; 
 	box-shadow: 0px 0px 30px 1px red;
 	height: 190px;
+}
+
+.animeBox {
+	padding: 10px;
+	margin: 5px auto;
+	transition: 0.3s;
+	border: 2px solid transparent;
+}
+
+.animeBox:hover { 
+	border: 2px solid orange;
 }
 
 #header{

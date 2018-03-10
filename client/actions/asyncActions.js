@@ -87,12 +87,13 @@ export const deleteSubreddits = (subreddits) => ({
 // fetch games from database
 export const getAnimeList = () => dispatch => {
 	dispatch(requestAnimeList());
+	let cors = 'https://cors-anywhere.herokuapp.com/';
 	let url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver?callback=bangumiRankCallback';
-	return axios.get(url)
+	return axios.get(cors + url)
 		.then(res => {
-			console.log(res)
-			let {data} = res;
-			//dispatch(receiveAnimeList(data));
+			let str = res.data.slice(20,-2);
+			let animeList = JSON.parse(str).result.list;
+			dispatch(receiveAnimeList(animeList.slice(0, 11)));
 		})
 		.catch(err => console.log(err))
 }

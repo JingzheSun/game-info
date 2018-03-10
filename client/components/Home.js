@@ -57,21 +57,27 @@ class Slide extends React.Component {
 class AnimeList extends React.Component{
 	constructor(props){
 		super(props);
-		console.log(props)
 		props.dispatch(getAnimeList())
 	}
 
 	render(){
 		return (
-			<ul style={styles.list}>
-				{
-					fontFamily.map((f,i) => (
-						<li style={{fontFamily: f}} key={i}>
-							HA,ha,hia
-						</li>
-					))
-				}
-			</ul>
+			<div style={styles.animeList}>
+				<h2 style={{marginLeft:'20px'}}>Anime</h2>
+				<hr />
+				<div>
+					{
+						this.props.animeList.items.map((info,i) => (
+							<a key={i} href={`https://bangumi.bilibili.com/anime/${info.season_id}`} style={styles.animeLink}>
+								<div className='animeBox'>
+									<img src={info.square_cover} style={styles.animeImg}/>
+									<p style={styles.animeInfo}>{info.title}</p> 
+								</div>
+							</a>
+						))
+					}
+				</div>
+			</div>
 		)
 	}
 }
@@ -88,15 +94,15 @@ class Home extends React.Component{
 			<div style={styles.box}>
 				<Slide games={this.props.games}/>
 				<Games/>
-				<AnimeList/>
+				<AnimeList animeList={this.props.anime.animeList}/>
 			</div>
 		)
 	}
 }
 
 const mapStateToProps = state => {
-	let {games} = state;
-	return {games}
+	let {games, anime} = state;
+	return {games, anime}
 }
 
 export default connect(
@@ -156,8 +162,26 @@ styles.pic = {
 	maxWidth: '100%'
 }
 
-styles.list = {
-	height:'700px',
+styles.animeList = {
+	color: 'white',
+	padding: '5px',
 	width: '28%',
-	color: 'white'
+	fontSize: '17px',
+	background: 'rgba(100,100,100,0.34)'
+}
+
+styles.animeLink = {
+	textDecoration: 'none',
+	color: 'lightblue'
+}
+
+styles.animeImg = {
+	display: 'inline-block',
+	maxHeight: '65px', 
+	borderRadius: '0.3em'
+}
+
+styles.animeInfo = {
+	marginLeft:'10px',
+	display: 'inline-block'
 }

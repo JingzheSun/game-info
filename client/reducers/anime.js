@@ -37,4 +37,4 @@ const anime = (state = {
 	}
 }
 
-export default games
+export default anime

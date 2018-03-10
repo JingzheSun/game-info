@@ -53,6 +53,8 @@ export class Games extends React.Component{
 		let {games} = this.props;
 		return (
 			<div style={styles.games}>
+				<h2 style={{marginLeft:'20px'}}>Games</h2>
+				<hr />
 				<SearchBox />
 				<div style={styles.box}>
 					{
@@ -101,5 +103,8 @@ styles.title = {
 }
 
 styles.games = {
-	width: '70%'
+	width: '70%',
+	background: 'rgba(100,100,100,0.34)',
+	color: 'white',
+	padding: '5px'
 }
