@@ -6,26 +6,6 @@ import {getGames, getWiki} from '../actions';
 import Comments from './Comments.js';
 import StarRating from './StarRating.js';
 
-// import GiantBomb from 'giant-bomb';
-// var options = {
-//   query: 'Metal Gear Solid',
-//   resources: ['game', 'video', 'franchise'],
-//   offset: 10,
-//   limit: 20,
-//   fields: ['name', 'aliases', 'platforms', 'release-date']
-// };
-
-// var gb = new GiantBomb('9f183f7d0c5315d108c2a56a2e15662b6a0c88a3', 'gameappjsAgent');
-// gb.search({query: 'Diablo', limit: 10, format: 'jsonp'}, 
-// 	function(error, response, body){
-// 		if(!error && response.statusCode == 200){
-// 			body.results.forEach(game => {
-// 				console.log(game);
-// 			});
-// 		}
-// 	}
-// );
-
 
 const AddComment = ({gameId, route, authId, rating}) => (
 	<form method='POST' action='/games/comments'>

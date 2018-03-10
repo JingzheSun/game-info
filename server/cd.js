@@ -3,7 +3,7 @@ var User = require('./schemas/user.js');
 var Comment = require('./schemas/comment.js');
 
 
-User.find({}, (err, data) => {
+Game.find({}, (err, data) => {
 	console.log(err || data);
 });
 
@@ -17,7 +17,7 @@ User.find({}, (err, data) => {
 // 	});	
 // });
 
-// Game.update({name: 'Tale of Wuxia'}, { $set: { name: '侠客风云传'}},
+// Game.update({name: '侠客风云传'}, { $set: { image: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1520665328113&di=071d4e35d5a3994f2ffcaeb8c978149a&imgtype=0&src=http%3A%2F%2Fimg.3dmgame.com%2Fuploads%2Fallimg%2F160928%2F316-16092Q44636.jpg'}},
 // 	(err, data) => {
 // 	console.log(data)
 // });	

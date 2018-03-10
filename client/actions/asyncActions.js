@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+
 // fetch games from database
 export const getGames = () => (dispatch, getState) => {
 	dispatch(requestGames());
@@ -18,6 +19,7 @@ export const receiveGames = (games) => ({
   	games,
   	receivedAt: Date.now()
 })
+
 
 //fetch wiki by api
 export const getWiki = (gameName) => (dispatch, getState) => {
@@ -44,6 +46,7 @@ export const receiveWiki = (wiki, gameName) => ({
   	wiki,
   	gameName
 })
+
 
 // fetch Subreddits by api
 export const getSubreddits = (subreddits) => (dispatch, getState) => {
@@ -78,4 +81,25 @@ export const changeSubreddits = (subreddits) => ({
 export const deleteSubreddits = (subreddits) => ({
 	type: 'DELETE_SUBREDDITS',
   	subreddits
+})
+
+
+// fetch games from database
+export const getAnimeList = () => dispatch => {
+	dispatch(requestAnimeList());
+	let url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver?callback=bangumiRankCallback';
+	return axios.get(url)
+		.then(res => {
+			console.log(res)
+			let {data} = res;
+			//dispatch(receiveAnimeList(data));
+		})
+		.catch(err => console.log(err))
+}
+export const requestAnimeList = () => ({
+  	type: 'REQUEST_ANIMELIST'
+})
+export const receiveAnimeList = (animeList) => ({
+  	type: 'RECEIVE_ANIMELIST',
+  	animeList
 })

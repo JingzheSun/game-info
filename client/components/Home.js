@@ -3,7 +3,8 @@ import axios from 'axios';
 import Swiper from 'react-id-swiper';
 import {connect} from 'react-redux';
 import {HashRouter, BrowserRouter, Route, Switch, Link} from 'react-router-dom';
-import Game from '../containers/FilterGameList.js';
+import Games from '../containers/FilterGameList.js';
+import {getAnimeList} from '../actions';
 
 const params = {
     spaceBetween: 30,
@@ -52,17 +53,30 @@ class Slide extends React.Component {
 		
 	}
 }
-const List = () => (
-	<ul style={styles.pic1}>
-		{
-			fontFamily.map((f,i) => (
-				<li style={{fontFamily: f}} key={i}>
-					HA,ha,hia
-				</li>
-			))
-		}
-	</ul>
-)
+
+class AnimeList extends React.Component{
+	constructor(props){
+		super(props);
+		console.log(props)
+		props.dispatch(getAnimeList())
+	}
+
+	render(){
+		return (
+			<ul style={styles.list}>
+				{
+					fontFamily.map((f,i) => (
+						<li style={{fontFamily: f}} key={i}>
+							HA,ha,hia
+						</li>
+					))
+				}
+			</ul>
+		)
+	}
+}
+
+AnimeList = connect()(AnimeList)
 
 class Home extends React.Component{
 	constructor(props){
@@ -73,8 +87,8 @@ class Home extends React.Component{
 		return (
 			<div style={styles.box}>
 				<Slide games={this.props.games}/>
-				<Game/>
-				<List/>
+				<Games/>
+				<AnimeList/>
 			</div>
 		)
 	}
@@ -142,8 +156,8 @@ styles.pic = {
 	maxWidth: '100%'
 }
 
-styles.pic1 = {
+styles.list = {
 	height:'700px',
-	width: '23%',
+	width: '28%',
 	color: 'white'
 }

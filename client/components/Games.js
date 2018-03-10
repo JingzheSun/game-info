@@ -44,7 +44,7 @@ export class Games extends React.Component{
 	    }).isRequired).isRequired
 	}
 
-	componentDidMount() {
+	componentWillMount() {
     	const { dispatch } = this.props
     	dispatch(getGames())
   	}
@@ -101,5 +101,5 @@ styles.title = {
 }
 
 styles.games = {
-	width: '75%'
+	width: '70%'
 }

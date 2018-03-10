@@ -7,6 +7,7 @@ import authInfo from './authInfo.js';
 import wikis from './wikis.js';
 import rating from './rating.js';
 import subreddits from './subreddits.js'
+import anime from './anime.js'
 
 
 const gameApp = combineReducers({
@@ -17,7 +18,8 @@ const gameApp = combineReducers({
 	authInfo,
 	wikis,
 	rating,
-	subreddits
+	subreddits,
+	anime
 })
 
 export default gameApp
