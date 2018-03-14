@@ -98,6 +98,7 @@ styles.img = {
 styles.title = {
 	color: 'white',
 	textAlign: 'center',
+	margin: '5px 0',
 	fontSize: '18px',
 	fontFamily: 'Mina, sans-serif'
 }

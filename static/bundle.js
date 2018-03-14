@@ -28135,6 +28135,56 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+var DropDown = function DropDown(_ref) {
+	var logout = _ref.logout,
+	    username = _ref.username;
+	return _react2.default.createElement(
+		'div',
+		{ className: 'btn-group' },
+		_react2.default.createElement(
+			'div',
+			{ 'data-toggle': 'dropdown', style: styles.link },
+			_react2.default.createElement(
+				'a',
+				{ href: '#', style: styles.link },
+				'Hi ' + username
+			)
+		),
+		_react2.default.createElement(
+			'ul',
+			{ className: 'dropdown-menu', style: styles.list },
+			_react2.default.createElement(
+				_reactRouterDom.Link,
+				{ to: '/', style: styles.link },
+				_react2.default.createElement(
+					'li',
+					null,
+					'Collection'
+				)
+			),
+			_react2.default.createElement(
+				_reactRouterDom.Link,
+				{ to: '/', style: styles.link },
+				_react2.default.createElement(
+					'li',
+					null,
+					'Manage'
+				)
+			),
+			_react2.default.createElement('li', { className: 'divider' }),
+			_react2.default.createElement(
+				'a',
+				{ href: '#', style: styles.link, onClick: logout },
+				_react2.default.createElement(
+					'li',
+					null,
+					'logout'
+				)
+			)
+		)
+	);
+};
+
 var Header = function (_React$Component) {
 	_inherits(Header, _React$Component);
 
@@ -28177,9 +28227,9 @@ var Header = function (_React$Component) {
 			var _this3 = this;
 
 			_axios2.default.get('auth/user').then(function (res) {
-				var _ref = res.data || { username: '', id: '' },
-				    username = _ref.username,
-				    id = _ref.id;
+				var _ref2 = res.data || { username: '', id: '' },
+				    username = _ref2.username,
+				    id = _ref2.id;
 
 				_this3.props.dispatch((0, _actions.authInfo)(username, id));
 			}).catch(function (err) {
@@ -28188,9 +28238,10 @@ var Header = function (_React$Component) {
 		}
 	}, {
 		key: 'logout',
-		value: function logout() {
+		value: function logout(event) {
 			var _this4 = this;
 
+			event.preventDefault();
 			_axios2.default.post('/auth/logout', {}).then(function (res) {
 				_this4.props.dispatch((0, _actions.authInfo)(''));
 				_this4.props.history.push('/');
@@ -28220,8 +28271,8 @@ var Header = function (_React$Component) {
 					null,
 					_react2.default.createElement(
 						_reactRouterDom.Link,
-						{ style: styles.link, to: '/reddits' },
-						'SUBREDDITS'
+						{ style: styles.link, to: '/animes' },
+						'ANIMES'
 					)
 				),
 				_react2.default.createElement(
@@ -28229,8 +28280,8 @@ var Header = function (_React$Component) {
 					null,
 					_react2.default.createElement(
 						_reactRouterDom.Link,
-						{ style: styles.link, to: '/animes' },
-						'ANIMES'
+						{ style: styles.link, to: '/reddits' },
+						'SUBREDDITS'
 					)
 				),
 				_react2.default.createElement(
@@ -28242,12 +28293,7 @@ var Header = function (_React$Component) {
 						'ARTICLES'
 					)
 				),
-				auth.username ? _react2.default.createElement(
-					'button',
-					{ onClick: this.logout, className: 'btn btn-danger' },
-					'Hi ',
-					auth.username
-				) : _react2.default.createElement(
+				auth.username ? _react2.default.createElement(DropDown, { logout: this.logout, username: auth.username }) : _react2.default.createElement(
 					'div',
 					null,
 					_react2.default.createElement(
@@ -28291,6 +28337,14 @@ styles.img = {
 	border: '2px',
 	borderRadius: '1em',
 	height: '100%'
+};
+
+styles.list = {
+	boxShadow: 'none',
+	borderStyle: 'none',
+	background: 'rgba(20,20,20,0.4)',
+	minWidth: '0px',
+	left: '-30px'
 };
 
 styles.link = {
@@ -29603,7 +29657,7 @@ var Slide = function (_React$Component) {
 						images.map(function (g, i) {
 							return _react2.default.createElement(
 								'div',
-								{ key: i, style: styles.frame },
+								{ key: i },
 								_react2.default.createElement(
 									_reactRouterDom.Link,
 									{ to: '/games/' + g.name },
@@ -29726,23 +29780,15 @@ styles.box = {
 
 styles.slide = {
 	background: 'rgba(100,100,100,0.44)',
-	height: '65%',
+	height: '75%',
 	width: '90%',
 	margin: '50px auto'
 };
 
-styles.frame = {
-	display: 'flex',
-	flexFlow: 'row',
-	flexWrap: 'nowrap',
-	justifyContent: 'space-around',
-	alignItems: 'center',
-	padding: '0 20px'
-};
-
 styles.pic = {
-	maxHeight: '100%',
-	maxWidth: '100%'
+	height: '100%',
+	width: '100%',
+	objectFit: 'contain'
 };
 
 styles.animeList = {
@@ -38087,6 +38133,7 @@ styles.img = {
 styles.title = {
 	color: 'white',
 	textAlign: 'center',
+	margin: '5px 0',
 	fontSize: '18px',
 	fontFamily: 'Mina, sans-serif'
 };
@@ -38321,6 +38368,12 @@ var GameInfo = function (_React$Component) {
 			return _react2.default.createElement(
 				'div',
 				{ className: 'container', style: styles.container },
+				_react2.default.createElement(
+					'h1',
+					null,
+					game.name
+				),
+				_react2.default.createElement('hr', null),
 				_react2.default.createElement(GameImage, game),
 				_react2.default.createElement(Wiki, { wiki: wiki }),
 				_react2.default.createElement('hr', { style: { background: 'white' } }),

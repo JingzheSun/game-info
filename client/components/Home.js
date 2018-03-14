@@ -37,7 +37,7 @@ class Slide extends React.Component {
 					<Swiper {...params}>
 					{
 						images.map((g, i) => (
-							<div key={i} style={styles.frame}>
+							<div key={i}>
 								<Link to={`/games/${g.name}`}>
 									<img src={g.url} style={styles.pic}/>
 								</Link>
@@ -143,23 +143,15 @@ styles.box = {
 
 styles.slide = {
 	background: 'rgba(100,100,100,0.44)',
-	height: '65%',
+	height: '75%',
 	width: '90%',
 	margin: '50px auto'
 }
 
-styles.frame = {
-	display: 'flex',
-	flexFlow: 'row',
-	flexWrap: 'nowrap',
-	justifyContent: 'space-around',
-	alignItems: 'center',
-	padding: '0 20px'
-}
-
 styles.pic = {
-	maxHeight:'100%',
-	maxWidth: '100%'
+	height:'100%',
+	width: '100%',
+	objectFit: 'contain'
 }
 
 styles.animeList = {

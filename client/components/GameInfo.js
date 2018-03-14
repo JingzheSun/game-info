@@ -52,6 +52,7 @@ class GameInfo extends React.Component{
 		let game = this.props.game || {};
 		return (
 			<div className='container' style={styles.container}>
+				<h1>{game.name}</h1><hr/>
 				<GameImage {...game}/>	
 				<Wiki wiki={wiki}/><hr style={{background: 'white'}}/>
 				<GameComments game={game} authInfo={authInfo} />

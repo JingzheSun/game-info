@@ -19,6 +19,15 @@ hr {
 	background: white;
 }
 
+.dropdown-menu>a>li {
+	text-align: center;
+	padding: 5px 20px;
+}
+
+.dropdown-menu>a>li:hover {
+	background: rgba(50,50,50,0.5);
+}
+
 .abc{
 	height: 200px;
 }

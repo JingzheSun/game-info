@@ -4,6 +4,21 @@ import PropTypes from 'prop-types';
 import {HashRouter, BrowserRouter, Route, Switch, Link} from 'react-router-dom';
 import {authInfo, updateY} from '../actions';
 
+
+const DropDown = ({logout, username}) => (
+	<div className="btn-group">
+		<div data-toggle="dropdown" style={styles.link}>
+			<a href='#' style={styles.link}>{`Hi ${username}`}</a>
+		</div>
+		<ul className="dropdown-menu" style={styles.list}>
+			<Link to="/" style={styles.link}><li>Collection</li></Link>
+			<Link to="/" style={styles.link}><li>Manage</li></Link>
+			<li className="divider"></li>
+			<a href='#' style={styles.link} onClick={logout}><li>logout</li></a>
+		</ul>
+	</div>
+)
+
 export default class Header extends React.Component{
 
 	static propTypes = {
@@ -48,7 +63,8 @@ export default class Header extends React.Component{
 		})	
   	}
 
-	logout(){
+	logout(event){
+		event.preventDefault();
 		axios.post('/auth/logout',{})
 		.then(res => {
 			this.props.dispatch(authInfo(''))
@@ -65,21 +81,17 @@ export default class Header extends React.Component{
 					<Link style={styles.link} to="/">HOME</Link>
 				</div>
 				<div>
-					<Link style={styles.link} to="/reddits">SUBREDDITS</Link>
+					<Link style={styles.link} to="/animes">ANIMES</Link>
 				</div>
 				<div>
-					<Link style={styles.link} to="/animes">ANIMES</Link>
+					<Link style={styles.link} to="/reddits">SUBREDDITS</Link>
 				</div>
 				<div>
 					<Link style={styles.link} to="/articles">ARTICLES</Link>
 				</div>
 				{
-					auth.username
-					? 	(
-							<button onClick={this.logout} className='btn btn-danger'> 
-								Hi {auth.username}
-							</button>
-						)
+					auth.username  
+					? (<DropDown logout={this.logout} username={auth.username} />)
 					: (<div><Link style={styles.link} to='/auth'>LOGIN</Link></div>)
 				}
 				
@@ -87,6 +99,7 @@ export default class Header extends React.Component{
 		)
 	}
 };
+
 
 const styles = {};
 styles.box = {
@@ -109,6 +122,14 @@ styles.img = {
 	border: '2px',
 	borderRadius: '1em',
 	height: '100%'
+}
+
+styles.list = {
+	boxShadow: 'none',
+	borderStyle: 'none',
+	background: 'rgba(20,20,20,0.4)',
+	minWidth: '0px',
+	left: '-30px'
 }
 
 styles.link = {
