@@ -34,10 +34,10 @@ Game.find({}, (err, data) => {
 
 
 // var game = new Game({
-// 	name: "Blade & Soul",
-// 	description: "Path, Desires, Revenge, Sword, Flower, Dream, Time, Sky, Moon, Sin, Punishiment, Soul, God",
-// 	category: ['Koera', 'MMORPG', 'Action'],
-// 	image: 'https://cdn.wallpapersafari.com/59/59/m6L0ax.jpg'
+// 	name: "Nier: Automata",
+// 	description: "For glory of mankind, All to be nice",
+// 	category: ['Japan', '2B', 'Action'],
+// 	image: 'https://www.meups4.com.br/wp-content/uploads/2017/03/Nier_Automata_2B_9S_A2.jpg'
 // });
 
 // game.save((err, res) => {

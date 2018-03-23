@@ -53,7 +53,7 @@ export default class Auth extends React.Component{
 		let {login, register} = this.props;
 		return (
 			<div style={styles.box}>
-				<div style={{marginTop: '20%'}}>	
+				<div style={styles.block}>	
 					<form method='POST' action='/auth/login'>
 						<span>Login</span><br/>
 						<span style={styles.err}>{login}</span><br/>
@@ -74,7 +74,7 @@ export default class Auth extends React.Component{
 
 				<hr style={styles.hr}></hr>
 
-				<div >	
+				<div style={styles.block}>	
 					<form method='POST' action='/auth/register'>
 						<span>New user</span><br/>
 						<span style={styles.err}>{register}</span><br/>
@@ -101,7 +101,13 @@ styles.box = {
 	flexWrap: 'nowrap',
 	justifyContent: 'space-around',
 	alignItems: 'baseline',
-	height: '100%'
+	height: '100%',	
+	padding: '0 40px'
+}
+
+styles.block = {
+	width: '40%',
+	marginTop: '20%'
 }
 
 styles.hr = {

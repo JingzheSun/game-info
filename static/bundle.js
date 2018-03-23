@@ -39090,7 +39090,7 @@ var Auth = function (_React$Component) {
 				{ style: styles.box },
 				_react2.default.createElement(
 					'div',
-					{ style: { marginTop: '20%' } },
+					{ style: styles.block },
 					_react2.default.createElement(
 						'form',
 						{ method: 'POST', action: '/auth/login' },
@@ -39138,7 +39138,7 @@ var Auth = function (_React$Component) {
 				_react2.default.createElement('hr', { style: styles.hr }),
 				_react2.default.createElement(
 					'div',
-					null,
+					{ style: styles.block },
 					_react2.default.createElement(
 						'form',
 						{ method: 'POST', action: '/auth/register' },
@@ -39189,7 +39189,13 @@ styles.box = {
 	flexWrap: 'nowrap',
 	justifyContent: 'space-around',
 	alignItems: 'baseline',
-	height: '100%'
+	height: '100%',
+	padding: '0 40px'
+};
+
+styles.block = {
+	width: '40%',
+	marginTop: '20%'
 };
 
 styles.hr = {
