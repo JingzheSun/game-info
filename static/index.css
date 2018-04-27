@@ -53,9 +53,11 @@ hr {
 }
 
 .animeListBox {
+	overflow: hidden;
+	white-space: nowrap;
 	padding: 10px;
 	margin: 5px auto;
-	transition: 0.3s;
+	transition: 0.25s;
 	border: 2px solid transparent;
 }
 
@@ -64,6 +66,7 @@ hr {
 }
 
 .animeBox {
+	margin: 0 5px; 
 	padding: 5px 0;
 	transition: 0.3s;
 }

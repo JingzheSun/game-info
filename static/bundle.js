@@ -29369,8 +29369,7 @@ var getAnimeList = exports.getAnimeList = function getAnimeList() {
 		var cors = 'https://cors-anywhere.herokuapp.com/';
 		var url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver';
 		return _axios2.default.get(cors + url).then(function (res) {
-			var str = res.data.slice(20, -2);
-			var animeList = JSON.parse(str).result.list;
+			var animeList = res.data.result.list;
 			dispatch(receiveAnimeList(animeList.slice(0, 11)));
 		}).catch(function (err) {
 			return console.log(err);
@@ -29396,8 +29395,7 @@ var getAnimeFullList = exports.getAnimeFullList = function getAnimeFullList() {
 		var cors = 'https://cors-anywhere.herokuapp.com/';
 		var url = 'https://bangumi.bilibili.com/jsonp/timeline_v2_global.ver';
 		return _axios2.default.get(cors + url).then(function (res) {
-			var str = res.data.slice(9, -2);
-			var animeList = JSON.parse(str).result;
+			var animeList = res.data.result;
 			dispatch(receiveAnimeFullList(animeList));
 		}).catch(function (err) {
 			return console.log(err);
@@ -29812,7 +29810,10 @@ styles.animeImg = {
 
 styles.animeInfo = {
 	marginLeft: '10px',
-	display: 'inline-block'
+	display: 'inline-block',
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap'
 };
 
 /***/ }),
@@ -38625,7 +38626,7 @@ var Animes = function (_React$Component) {
 								_react2.default.createElement('img', { src: info.cover, style: styles.img }),
 								_react2.default.createElement(
 									'h5',
-									{ style: { textAlign: 'center' } },
+									{ style: styles.title },
 									info.title
 								)
 							)
@@ -38671,6 +38672,14 @@ styles.animeLink = {
 styles.img = {
 	maxHeight: '280px',
 	borderRadius: '0.3em'
+};
+
+styles.title = {
+	textAlign: 'center',
+	maxWidth: '210px',
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap'
 };
 
 /***/ }),

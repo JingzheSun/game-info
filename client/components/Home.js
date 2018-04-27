@@ -175,5 +175,8 @@ styles.animeImg = {
 
 styles.animeInfo = {
 	marginLeft:'10px',
-	display: 'inline-block'
+	display: 'inline-block',
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap'
 }

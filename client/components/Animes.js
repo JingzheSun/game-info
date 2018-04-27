@@ -23,7 +23,7 @@ class Animes extends React.Component{
 							<div key={i} className='animeBox'>
 								<a href={`https://bangumi.bilibili.com/anime/${info.season_id}`} style={styles.animeLink}>
 									<img src={info.cover} style={styles.img}/>
-									<h5 style={{textAlign: 'center'}}>{info.title}</h5>
+									<h5 style={styles.title}>{info.title}</h5>
 								</a>
 							</div>
 						))
@@ -64,4 +64,12 @@ styles.animeLink = {
 styles.img = {
 	maxHeight: '280px',
 	borderRadius: '0.3em'
+}
+
+styles.title = {
+	textAlign: 'center',
+	maxWidth: '210px',
+	overflow: 'hidden',
+	textOverflow: 'ellipsis',
+	whiteSpace: 'nowrap'
 }

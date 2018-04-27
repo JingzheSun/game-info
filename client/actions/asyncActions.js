@@ -91,8 +91,7 @@ export const getAnimeList = () => dispatch => {
 	let url = 'https://bangumi.bilibili.com/jsonp/season_rank_list/global/3.ver';
 	return axios.get(cors + url)
 		.then(res => {
-			let str = res.data.slice(20,-2);
-			let animeList = JSON.parse(str).result.list;
+			let animeList = res.data.result.list;
 			dispatch(receiveAnimeList(animeList.slice(0, 11)));
 		})
 		.catch(err => console.log(err))
@@ -113,8 +112,7 @@ export const getAnimeFullList = () => dispatch => {
 	let url = 'https://bangumi.bilibili.com/jsonp/timeline_v2_global.ver';
 	return axios.get(cors + url)
 		.then(res => {
-			let str = res.data.slice(9,-2);
-			let animeList = JSON.parse(str).result;
+			let animeList = res.data.result;
 			dispatch(receiveAnimeFullList(animeList));
 		})
 		.catch(err => console.log(err))
